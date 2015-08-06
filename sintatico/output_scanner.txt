@@ -1,0 +1,4 @@
+Lexical Analyzer Error
+
+              status                 type                value              line_num                  pos 
+

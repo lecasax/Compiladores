@@ -1,0 +1,21 @@
+Symbol Table 
+
+              symbol                token                Dtype                  init
+
+               count        identificador                   NO                    NO
+        var_registro        identificador             REGISTRO                    NO
+                var7        identificador                 REAL                    NO
+      algoritmo_soma        identificador            algoritmo                    NO
+                var1        identificador              INTEIRO                    NO
+                var3        identificador              INTEIRO                    NO
+                var2        identificador              INTEIRO                    NO
+    entrada_programa        identificador                   NO                    NO
+        soma_numeros        identificador         Procedimento                    NO
+  var_into_registro1        identificador             REGISTRO                    NO
+               vetor        identificador              INTEIRO                    NO
+               varP2        identificador              INTEIRO                    NO
+              result        identificador                 REAL                    NO
+               varP1        identificador              INTEIRO                    NO
+               varID        identificador         var_registro                    NO
+           var_into1        identificador              INTEIRO                    NO
+           var_into2        identificador              INTEIRO                    NO

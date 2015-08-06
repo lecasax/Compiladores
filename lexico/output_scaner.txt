@@ -1,0 +1,4 @@
+Data: var2 2,3
+
+legal (identificador, var2, 1, 0)
+legal (num_real, 2,3, 1, 5)

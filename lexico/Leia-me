@@ -1,0 +1,30 @@
+Data: Junho de 2015
+Objetivo: Criação de um analisador léxico, 
+Disciplina: Compiladores
+Tecnologia: ply-python, gerador lex
+Aluno: Leandro Souza da Silva, RGM: 23418
+Professor: Andre Chastel
+
+Setup:
+	sudo apt-get install python-pip
+	sudo pip install ply
+
+Run:
+	python lex.py --option size-tokens
+	Example:
+		python lex.py 50 	
+		#generate files with 50 Tokens.
+
+Thank you.
+
+
+Portuguese instructions:
+
+	O Programa Lex.py foi preparado para gerar arquivos de testes automáticos,
+	a cada execucao ele gera um arquivo randômico com a quantidade de tokens que o
+	usuario passa pela linha de comando, Ex: python lex.py 50, o programa irá gerar 50 
+	tokens no arquivo de entrada. Ele retorna dois arquivos de saída,
+	um contendo a análise léxica e outro a tabela de símbolos, ambos estão formatados
+	para facilitar a compreensão.
+
+Obrigado.

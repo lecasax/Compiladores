@@ -1,0 +1,3420 @@
+Created by PLY version 3.6 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    pr_repita
+    pr_funcao
+    aspas
+
+Grammar
+
+Rule 0     S' -> algo
+Rule 1     algo -> pr_algoritmo identificador procs pr_inicio decl cmds pr_fim_algo
+Rule 2     decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl
+Rule 3     decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+Rule 4     decl -> empty
+Rule 5     l_ids -> identificador comp lids
+Rule 6     lids -> virgula l_ids
+Rule 7     lids -> empty
+Rule 8     comp -> abre_col dim fecha_col
+Rule 9     comp -> empty
+Rule 10    dim -> num_inteiro ponto ponto dims
+Rule 11    dims -> virgula dim
+Rule 12    dims -> empty
+Rule 13    tipo -> pr_logico
+Rule 14    tipo -> pr_caracter
+Rule 15    tipo -> pr_inteiro
+Rule 16    tipo -> pr_real
+Rule 17    tipo -> identificador
+Rule 18    tipo_registro -> pr_registro abre_par decl fecha_par
+Rule 19    struct -> pr_struct
+Rule 20    reg -> pr_registro abre_par decl fecha_par
+Rule 21    registro -> pr_registro abre_par decl fecha_par
+Rule 22    cmds -> pr_leia l_var cmds
+Rule 23    cmds -> pr_escreva l_esc cmds
+Rule 24    cmds -> identificador op_atrib exp cmds
+Rule 25    cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds
+Rule 26    cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+Rule 27    cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+Rule 28    cmds -> pr_enqto cond cmds pr_fim_enqto cmds
+Rule 29    cmds -> identificador abre_par l_var fecha_par cmds
+Rule 30    cmds -> empty
+Rule 31    l_var -> var l_vrs
+Rule 32    l_vrs -> virgula var
+Rule 33    l_vrs -> empty
+Rule 34    var -> identificador ind
+Rule 35    ind -> abre_col num_inteiro fecha_col ind
+Rule 36    ind -> ponto identificador ind
+Rule 37    ind -> empty
+Rule 38    l_esc -> const_list l_escs
+Rule 39    l_esc -> var l_escs
+Rule 40    l_escs -> virgula l_esc
+Rule 41    l_escs -> empty
+Rule 42    sen -> pr_senao cmds
+Rule 43    sen -> empty
+Rule 44    procs -> pr_procmto identificador pr_entrada l_var pr_saida l_var decl cmds pr_fim_funcao
+Rule 45    procs -> pr_procmto identificador pr_entrada l_var decl cmds pr_fim_procmto
+Rule 46    exp -> exp_l
+Rule 47    exp -> exp_a
+Rule 48    exp_a -> term_a muldiv exp_a
+Rule 49    exp_a -> term_a
+Rule 50    term_a -> fat_a adisub term_a
+Rule 51    term_a -> fat_a
+Rule 52    fat_a -> exp_a op_arit_expo exp_a
+Rule 53    fat_a -> exp_a op_arit_rad exp_a
+Rule 54    fat_a -> abre_par exp_a fecha_par
+Rule 55    fat_a -> func abre_par l_var fecha_par
+Rule 56    fat_a -> var
+Rule 57    fat_a -> num_inteiro
+Rule 58    fat_a -> num_real
+Rule 59    muldiv -> op_arit_mult
+Rule 60    muldiv -> op_arit_div
+Rule 61    adisub -> op_arit_adi
+Rule 62    adisub -> op_arit_sub
+Rule 63    func -> pr_abs
+Rule 64    func -> pr_trunca
+Rule 65    func -> pr_resto
+Rule 66    exp_l -> rel op_log exp_l
+Rule 67    exp_l -> op_log_nao abre_par rel fecha_par
+Rule 68    exp_l -> rel
+Rule 69    rel -> fat_r op_rel fat_r
+Rule 70    fat_r -> fat_a
+Rule 71    fat_r -> const_list
+Rule 72    op_log -> op_log_and
+Rule 73    op_log -> op_log_or
+Rule 74    op_rel -> op_rel_igual
+Rule 75    op_rel -> op_rel_naoigual
+Rule 76    op_rel -> op_rel_maior
+Rule 77    op_rel -> op_rel_maiorigual
+Rule 78    op_rel -> op_rel_menor
+Rule 79    op_rel -> op_rel_menorigual
+Rule 80    cond -> abre_par exp_l fecha_par
+Rule 81    empty -> <empty>
+
+Terminals, with rules where they appear
+
+abre_col             : 8 35
+abre_par             : 18 20 21 29 54 55 67 80
+aspas                : 
+const_list           : 38 71
+dois_pontos          : 2 3
+error                : 
+fecha_col            : 8 35
+fecha_par            : 18 20 21 29 54 55 67 80
+identificador        : 1 5 17 24 26 27 27 27 27 29 34 36 44 45
+num_inteiro          : 10 26 26 26 35 57
+num_real             : 58
+op_arit_adi          : 61
+op_arit_div          : 60
+op_arit_expo         : 52
+op_arit_mult         : 59
+op_arit_rad          : 53
+op_arit_sub          : 62
+op_atrib             : 24 26 27
+op_log_and           : 72
+op_log_nao           : 67
+op_log_or            : 73
+op_rel_igual         : 74
+op_rel_maior         : 76
+op_rel_maiorigual    : 77
+op_rel_menor         : 78
+op_rel_menorigual    : 79
+op_rel_naoigual      : 75
+ponto                : 10 10 36
+ponto_virgula        : 2 3
+pr_abs               : 63
+pr_algoritmo         : 1
+pr_ate               : 26 27
+pr_caracter          : 14
+pr_declare           : 2 3
+pr_enqto             : 28
+pr_entao             : 25
+pr_entrada           : 44 45
+pr_escreva           : 23
+pr_faca              : 26 27
+pr_fim_algo          : 1
+pr_fim_enqto         : 28
+pr_fim_funcao        : 44
+pr_fim_para          : 26 27
+pr_fim_procmto       : 45
+pr_fim_se            : 25
+pr_funcao            : 
+pr_inicio            : 1
+pr_inteiro           : 15
+pr_leia              : 22
+pr_logico            : 13
+pr_para              : 26 27
+pr_passo             : 26 27
+pr_procmto           : 44 45
+pr_real              : 16
+pr_registro          : 18 20 21
+pr_repita            : 
+pr_resto             : 65
+pr_saida             : 44
+pr_se                : 25
+pr_senao             : 42
+pr_struct            : 19
+pr_trunca            : 64
+virgula              : 6 11 32 40
+
+Nonterminals, with rules where they appear
+
+adisub               : 50
+algo                 : 0
+cmds                 : 1 22 23 24 25 25 26 26 27 27 28 28 29 42 44 45
+comp                 : 5
+cond                 : 25 28
+decl                 : 1 2 3 18 20 21 44 45
+dim                  : 8 11
+dims                 : 10
+empty                : 4 7 9 12 30 33 37 41 43
+exp                  : 24
+exp_a                : 47 48 52 52 53 53 54
+exp_l                : 46 66 80
+fat_a                : 50 51 70
+fat_r                : 69 69
+func                 : 55
+ind                  : 34 35 36
+l_esc                : 23 40
+l_escs               : 38 39
+l_ids                : 2 3 6
+l_var                : 22 29 44 44 45 55
+l_vrs                : 31
+lids                 : 5
+muldiv               : 48
+op_log               : 66
+op_rel               : 69
+procs                : 1
+reg                  : 
+registro             : 
+rel                  : 66 67 68
+sen                  : 25
+struct               : 
+term_a               : 48 49 50
+tipo                 : 2
+tipo_registro        : 3
+var                  : 31 32 39 56
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . algo
+    (1) algo -> . pr_algoritmo identificador procs pr_inicio decl cmds pr_fim_algo
+
+    pr_algoritmo    shift and go to state 1
+
+    algo                           shift and go to state 2
+
+state 1
+
+    (1) algo -> pr_algoritmo . identificador procs pr_inicio decl cmds pr_fim_algo
+
+    identificador   shift and go to state 3
+
+
+state 2
+
+    (0) S' -> algo .
+
+
+
+state 3
+
+    (1) algo -> pr_algoritmo identificador . procs pr_inicio decl cmds pr_fim_algo
+    (44) procs -> . pr_procmto identificador pr_entrada l_var pr_saida l_var decl cmds pr_fim_funcao
+    (45) procs -> . pr_procmto identificador pr_entrada l_var decl cmds pr_fim_procmto
+
+    pr_procmto      shift and go to state 4
+
+    procs                          shift and go to state 5
+
+state 4
+
+    (44) procs -> pr_procmto . identificador pr_entrada l_var pr_saida l_var decl cmds pr_fim_funcao
+    (45) procs -> pr_procmto . identificador pr_entrada l_var decl cmds pr_fim_procmto
+
+    identificador   shift and go to state 6
+
+
+state 5
+
+    (1) algo -> pr_algoritmo identificador procs . pr_inicio decl cmds pr_fim_algo
+
+    pr_inicio       shift and go to state 7
+
+
+state 6
+
+    (44) procs -> pr_procmto identificador . pr_entrada l_var pr_saida l_var decl cmds pr_fim_funcao
+    (45) procs -> pr_procmto identificador . pr_entrada l_var decl cmds pr_fim_procmto
+
+    pr_entrada      shift and go to state 8
+
+
+state 7
+
+    (1) algo -> pr_algoritmo identificador procs pr_inicio . decl cmds pr_fim_algo
+    (2) decl -> . pr_declare l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> . pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+    (4) decl -> . empty
+    (81) empty -> .
+
+    pr_declare      shift and go to state 11
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+
+    decl                           shift and go to state 9
+    empty                          shift and go to state 10
+
+state 8
+
+    (44) procs -> pr_procmto identificador pr_entrada . l_var pr_saida l_var decl cmds pr_fim_funcao
+    (45) procs -> pr_procmto identificador pr_entrada . l_var decl cmds pr_fim_procmto
+    (31) l_var -> . var l_vrs
+    (34) var -> . identificador ind
+
+    identificador   shift and go to state 12
+
+    l_var                          shift and go to state 13
+    var                            shift and go to state 14
+
+state 9
+
+    (1) algo -> pr_algoritmo identificador procs pr_inicio decl . cmds pr_fim_algo
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 20
+    empty                          shift and go to state 18
+
+state 10
+
+    (4) decl -> empty .
+
+    pr_leia         reduce using rule 4 (decl -> empty .)
+    pr_escreva      reduce using rule 4 (decl -> empty .)
+    identificador   reduce using rule 4 (decl -> empty .)
+    pr_se           reduce using rule 4 (decl -> empty .)
+    pr_para         reduce using rule 4 (decl -> empty .)
+    pr_enqto        reduce using rule 4 (decl -> empty .)
+    pr_fim_procmto  reduce using rule 4 (decl -> empty .)
+    pr_fim_algo     reduce using rule 4 (decl -> empty .)
+    pr_fim_funcao   reduce using rule 4 (decl -> empty .)
+    fecha_par       reduce using rule 4 (decl -> empty .)
+
+
+state 11
+
+    (2) decl -> pr_declare . l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> pr_declare . l_ids dois_pontos tipo_registro ponto_virgula decl
+    (5) l_ids -> . identificador comp lids
+
+    identificador   shift and go to state 23
+
+    l_ids                          shift and go to state 24
+
+state 12
+
+    (34) var -> identificador . ind
+    (35) ind -> . abre_col num_inteiro fecha_col ind
+    (36) ind -> . ponto identificador ind
+    (37) ind -> . empty
+    (81) empty -> .
+
+    abre_col        shift and go to state 27
+    ponto           shift and go to state 25
+    virgula         reduce using rule 81 (empty -> .)
+    pr_saida        reduce using rule 81 (empty -> .)
+    pr_declare      reduce using rule 81 (empty -> .)
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+    fecha_par       reduce using rule 81 (empty -> .)
+    op_arit_adi     reduce using rule 81 (empty -> .)
+    op_arit_sub     reduce using rule 81 (empty -> .)
+    op_rel_igual    reduce using rule 81 (empty -> .)
+    op_rel_naoigual reduce using rule 81 (empty -> .)
+    op_rel_maior    reduce using rule 81 (empty -> .)
+    op_rel_maiorigual reduce using rule 81 (empty -> .)
+    op_rel_menor    reduce using rule 81 (empty -> .)
+    op_rel_menorigual reduce using rule 81 (empty -> .)
+    op_arit_mult    reduce using rule 81 (empty -> .)
+    op_arit_div     reduce using rule 81 (empty -> .)
+    op_arit_expo    reduce using rule 81 (empty -> .)
+    op_arit_rad     reduce using rule 81 (empty -> .)
+    op_log_and      reduce using rule 81 (empty -> .)
+    op_log_or       reduce using rule 81 (empty -> .)
+
+    ind                            shift and go to state 26
+    empty                          shift and go to state 28
+
+state 13
+
+    (44) procs -> pr_procmto identificador pr_entrada l_var . pr_saida l_var decl cmds pr_fim_funcao
+    (45) procs -> pr_procmto identificador pr_entrada l_var . decl cmds pr_fim_procmto
+    (2) decl -> . pr_declare l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> . pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+    (4) decl -> . empty
+    (81) empty -> .
+
+    pr_saida        shift and go to state 30
+    pr_declare      shift and go to state 11
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+
+    decl                           shift and go to state 29
+    empty                          shift and go to state 10
+
+state 14
+
+    (31) l_var -> var . l_vrs
+    (32) l_vrs -> . virgula var
+    (33) l_vrs -> . empty
+    (81) empty -> .
+
+    virgula         shift and go to state 32
+    pr_saida        reduce using rule 81 (empty -> .)
+    pr_declare      reduce using rule 81 (empty -> .)
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+    fecha_par       reduce using rule 81 (empty -> .)
+
+    l_vrs                          shift and go to state 31
+    empty                          shift and go to state 33
+
+state 15
+
+    (26) cmds -> pr_para . identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> pr_para . identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+
+    identificador   shift and go to state 34
+
+
+state 16
+
+    (25) cmds -> pr_se . cond pr_entao cmds sen pr_fim_se cmds
+    (80) cond -> . abre_par exp_l fecha_par
+
+    abre_par        shift and go to state 35
+
+    cond                           shift and go to state 36
+
+state 17
+
+    (28) cmds -> pr_enqto . cond cmds pr_fim_enqto cmds
+    (80) cond -> . abre_par exp_l fecha_par
+
+    abre_par        shift and go to state 35
+
+    cond                           shift and go to state 37
+
+state 18
+
+    (30) cmds -> empty .
+
+    pr_fim_para     reduce using rule 30 (cmds -> empty .)
+    pr_fim_algo     reduce using rule 30 (cmds -> empty .)
+    pr_fim_procmto  reduce using rule 30 (cmds -> empty .)
+    pr_fim_enqto    reduce using rule 30 (cmds -> empty .)
+    pr_senao        reduce using rule 30 (cmds -> empty .)
+    pr_fim_se       reduce using rule 30 (cmds -> empty .)
+    pr_fim_funcao   reduce using rule 30 (cmds -> empty .)
+
+
+state 19
+
+    (22) cmds -> pr_leia . l_var cmds
+    (31) l_var -> . var l_vrs
+    (34) var -> . identificador ind
+
+    identificador   shift and go to state 12
+
+    var                            shift and go to state 14
+    l_var                          shift and go to state 38
+
+state 20
+
+    (1) algo -> pr_algoritmo identificador procs pr_inicio decl cmds . pr_fim_algo
+
+    pr_fim_algo     shift and go to state 39
+
+
+state 21
+
+    (24) cmds -> identificador . op_atrib exp cmds
+    (29) cmds -> identificador . abre_par l_var fecha_par cmds
+
+    op_atrib        shift and go to state 40
+    abre_par        shift and go to state 41
+
+
+state 22
+
+    (23) cmds -> pr_escreva . l_esc cmds
+    (38) l_esc -> . const_list l_escs
+    (39) l_esc -> . var l_escs
+    (34) var -> . identificador ind
+
+    const_list      shift and go to state 43
+    identificador   shift and go to state 12
+
+    var                            shift and go to state 44
+    l_esc                          shift and go to state 42
+
+state 23
+
+    (5) l_ids -> identificador . comp lids
+    (8) comp -> . abre_col dim fecha_col
+    (9) comp -> . empty
+    (81) empty -> .
+
+    abre_col        shift and go to state 47
+    virgula         reduce using rule 81 (empty -> .)
+    dois_pontos     reduce using rule 81 (empty -> .)
+
+    comp                           shift and go to state 45
+    empty                          shift and go to state 46
+
+state 24
+
+    (2) decl -> pr_declare l_ids . dois_pontos tipo ponto_virgula decl
+    (3) decl -> pr_declare l_ids . dois_pontos tipo_registro ponto_virgula decl
+
+    dois_pontos     shift and go to state 48
+
+
+state 25
+
+    (36) ind -> ponto . identificador ind
+
+    identificador   shift and go to state 49
+
+
+state 26
+
+    (34) var -> identificador ind .
+
+    virgula         reduce using rule 34 (var -> identificador ind .)
+    pr_leia         reduce using rule 34 (var -> identificador ind .)
+    pr_escreva      reduce using rule 34 (var -> identificador ind .)
+    identificador   reduce using rule 34 (var -> identificador ind .)
+    pr_se           reduce using rule 34 (var -> identificador ind .)
+    pr_para         reduce using rule 34 (var -> identificador ind .)
+    pr_enqto        reduce using rule 34 (var -> identificador ind .)
+    pr_fim_algo     reduce using rule 34 (var -> identificador ind .)
+    pr_fim_procmto  reduce using rule 34 (var -> identificador ind .)
+    pr_fim_enqto    reduce using rule 34 (var -> identificador ind .)
+    pr_senao        reduce using rule 34 (var -> identificador ind .)
+    pr_fim_se       reduce using rule 34 (var -> identificador ind .)
+    pr_fim_funcao   reduce using rule 34 (var -> identificador ind .)
+    pr_fim_para     reduce using rule 34 (var -> identificador ind .)
+    op_arit_adi     reduce using rule 34 (var -> identificador ind .)
+    op_arit_sub     reduce using rule 34 (var -> identificador ind .)
+    op_log_and      reduce using rule 34 (var -> identificador ind .)
+    op_log_or       reduce using rule 34 (var -> identificador ind .)
+    fecha_par       reduce using rule 34 (var -> identificador ind .)
+    op_arit_mult    reduce using rule 34 (var -> identificador ind .)
+    op_arit_div     reduce using rule 34 (var -> identificador ind .)
+    op_arit_expo    reduce using rule 34 (var -> identificador ind .)
+    op_arit_rad     reduce using rule 34 (var -> identificador ind .)
+    op_rel_igual    reduce using rule 34 (var -> identificador ind .)
+    op_rel_naoigual reduce using rule 34 (var -> identificador ind .)
+    op_rel_maior    reduce using rule 34 (var -> identificador ind .)
+    op_rel_maiorigual reduce using rule 34 (var -> identificador ind .)
+    op_rel_menor    reduce using rule 34 (var -> identificador ind .)
+    op_rel_menorigual reduce using rule 34 (var -> identificador ind .)
+    pr_saida        reduce using rule 34 (var -> identificador ind .)
+    pr_declare      reduce using rule 34 (var -> identificador ind .)
+
+
+state 27
+
+    (35) ind -> abre_col . num_inteiro fecha_col ind
+
+    num_inteiro     shift and go to state 50
+
+
+state 28
+
+    (37) ind -> empty .
+
+    virgula         reduce using rule 37 (ind -> empty .)
+    pr_saida        reduce using rule 37 (ind -> empty .)
+    pr_declare      reduce using rule 37 (ind -> empty .)
+    pr_leia         reduce using rule 37 (ind -> empty .)
+    pr_escreva      reduce using rule 37 (ind -> empty .)
+    identificador   reduce using rule 37 (ind -> empty .)
+    pr_se           reduce using rule 37 (ind -> empty .)
+    pr_para         reduce using rule 37 (ind -> empty .)
+    pr_enqto        reduce using rule 37 (ind -> empty .)
+    pr_fim_procmto  reduce using rule 37 (ind -> empty .)
+    pr_fim_algo     reduce using rule 37 (ind -> empty .)
+    pr_fim_enqto    reduce using rule 37 (ind -> empty .)
+    pr_senao        reduce using rule 37 (ind -> empty .)
+    pr_fim_se       reduce using rule 37 (ind -> empty .)
+    pr_fim_funcao   reduce using rule 37 (ind -> empty .)
+    pr_fim_para     reduce using rule 37 (ind -> empty .)
+    fecha_par       reduce using rule 37 (ind -> empty .)
+    op_arit_adi     reduce using rule 37 (ind -> empty .)
+    op_arit_sub     reduce using rule 37 (ind -> empty .)
+    op_rel_igual    reduce using rule 37 (ind -> empty .)
+    op_rel_naoigual reduce using rule 37 (ind -> empty .)
+    op_rel_maior    reduce using rule 37 (ind -> empty .)
+    op_rel_maiorigual reduce using rule 37 (ind -> empty .)
+    op_rel_menor    reduce using rule 37 (ind -> empty .)
+    op_rel_menorigual reduce using rule 37 (ind -> empty .)
+    op_arit_mult    reduce using rule 37 (ind -> empty .)
+    op_arit_div     reduce using rule 37 (ind -> empty .)
+    op_arit_expo    reduce using rule 37 (ind -> empty .)
+    op_arit_rad     reduce using rule 37 (ind -> empty .)
+    op_log_and      reduce using rule 37 (ind -> empty .)
+    op_log_or       reduce using rule 37 (ind -> empty .)
+
+
+state 29
+
+    (45) procs -> pr_procmto identificador pr_entrada l_var decl . cmds pr_fim_procmto
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 51
+    empty                          shift and go to state 18
+
+state 30
+
+    (44) procs -> pr_procmto identificador pr_entrada l_var pr_saida . l_var decl cmds pr_fim_funcao
+    (31) l_var -> . var l_vrs
+    (34) var -> . identificador ind
+
+    identificador   shift and go to state 12
+
+    l_var                          shift and go to state 52
+    var                            shift and go to state 14
+
+state 31
+
+    (31) l_var -> var l_vrs .
+
+    pr_saida        reduce using rule 31 (l_var -> var l_vrs .)
+    pr_declare      reduce using rule 31 (l_var -> var l_vrs .)
+    pr_leia         reduce using rule 31 (l_var -> var l_vrs .)
+    pr_escreva      reduce using rule 31 (l_var -> var l_vrs .)
+    identificador   reduce using rule 31 (l_var -> var l_vrs .)
+    pr_se           reduce using rule 31 (l_var -> var l_vrs .)
+    pr_para         reduce using rule 31 (l_var -> var l_vrs .)
+    pr_enqto        reduce using rule 31 (l_var -> var l_vrs .)
+    pr_fim_procmto  reduce using rule 31 (l_var -> var l_vrs .)
+    pr_fim_funcao   reduce using rule 31 (l_var -> var l_vrs .)
+    fecha_par       reduce using rule 31 (l_var -> var l_vrs .)
+    pr_fim_algo     reduce using rule 31 (l_var -> var l_vrs .)
+    pr_fim_enqto    reduce using rule 31 (l_var -> var l_vrs .)
+    pr_senao        reduce using rule 31 (l_var -> var l_vrs .)
+    pr_fim_se       reduce using rule 31 (l_var -> var l_vrs .)
+    pr_fim_para     reduce using rule 31 (l_var -> var l_vrs .)
+
+
+state 32
+
+    (32) l_vrs -> virgula . var
+    (34) var -> . identificador ind
+
+    identificador   shift and go to state 12
+
+    var                            shift and go to state 53
+
+state 33
+
+    (33) l_vrs -> empty .
+
+    pr_saida        reduce using rule 33 (l_vrs -> empty .)
+    pr_declare      reduce using rule 33 (l_vrs -> empty .)
+    pr_leia         reduce using rule 33 (l_vrs -> empty .)
+    pr_escreva      reduce using rule 33 (l_vrs -> empty .)
+    identificador   reduce using rule 33 (l_vrs -> empty .)
+    pr_se           reduce using rule 33 (l_vrs -> empty .)
+    pr_para         reduce using rule 33 (l_vrs -> empty .)
+    pr_enqto        reduce using rule 33 (l_vrs -> empty .)
+    pr_fim_procmto  reduce using rule 33 (l_vrs -> empty .)
+    pr_fim_algo     reduce using rule 33 (l_vrs -> empty .)
+    pr_fim_enqto    reduce using rule 33 (l_vrs -> empty .)
+    pr_senao        reduce using rule 33 (l_vrs -> empty .)
+    pr_fim_se       reduce using rule 33 (l_vrs -> empty .)
+    pr_fim_funcao   reduce using rule 33 (l_vrs -> empty .)
+    pr_fim_para     reduce using rule 33 (l_vrs -> empty .)
+    fecha_par       reduce using rule 33 (l_vrs -> empty .)
+
+
+state 34
+
+    (26) cmds -> pr_para identificador . op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> pr_para identificador . op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+
+    op_atrib        shift and go to state 54
+
+
+state 35
+
+    (80) cond -> abre_par . exp_l fecha_par
+    (66) exp_l -> . rel op_log exp_l
+    (67) exp_l -> . op_log_nao abre_par rel fecha_par
+    (68) exp_l -> . rel
+    (69) rel -> . fat_r op_rel fat_r
+    (70) fat_r -> . fat_a
+    (71) fat_r -> . const_list
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+
+    op_log_nao      shift and go to state 60
+    const_list      shift and go to state 58
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    exp_a                          shift and go to state 61
+    func                           shift and go to state 67
+    exp_l                          shift and go to state 63
+    fat_a                          shift and go to state 57
+    var                            shift and go to state 65
+    rel                            shift and go to state 64
+    fat_r                          shift and go to state 66
+
+state 36
+
+    (25) cmds -> pr_se cond . pr_entao cmds sen pr_fim_se cmds
+
+    pr_entao        shift and go to state 71
+
+
+state 37
+
+    (28) cmds -> pr_enqto cond . cmds pr_fim_enqto cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 72
+    empty                          shift and go to state 18
+
+state 38
+
+    (22) cmds -> pr_leia l_var . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 73
+    empty                          shift and go to state 18
+
+state 39
+
+    (1) algo -> pr_algoritmo identificador procs pr_inicio decl cmds pr_fim_algo .
+
+    $end            reduce using rule 1 (algo -> pr_algoritmo identificador procs pr_inicio decl cmds pr_fim_algo .)
+
+
+state 40
+
+    (24) cmds -> identificador op_atrib . exp cmds
+    (46) exp -> . exp_l
+    (47) exp -> . exp_a
+    (66) exp_l -> . rel op_log exp_l
+    (67) exp_l -> . op_log_nao abre_par rel fecha_par
+    (68) exp_l -> . rel
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (69) rel -> . fat_r op_rel fat_r
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+    (70) fat_r -> . fat_a
+    (71) fat_r -> . const_list
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+
+    op_log_nao      shift and go to state 60
+    const_list      shift and go to state 58
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    exp_a                          shift and go to state 75
+    exp                            shift and go to state 77
+    exp_l                          shift and go to state 76
+    fat_a                          shift and go to state 74
+    var                            shift and go to state 65
+    rel                            shift and go to state 64
+    func                           shift and go to state 67
+    fat_r                          shift and go to state 66
+
+state 41
+
+    (29) cmds -> identificador abre_par . l_var fecha_par cmds
+    (31) l_var -> . var l_vrs
+    (34) var -> . identificador ind
+
+    identificador   shift and go to state 12
+
+    var                            shift and go to state 14
+    l_var                          shift and go to state 78
+
+state 42
+
+    (23) cmds -> pr_escreva l_esc . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 79
+    empty                          shift and go to state 18
+
+state 43
+
+    (38) l_esc -> const_list . l_escs
+    (40) l_escs -> . virgula l_esc
+    (41) l_escs -> . empty
+    (81) empty -> .
+
+    virgula         shift and go to state 81
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    empty                          shift and go to state 80
+    l_escs                         shift and go to state 82
+
+state 44
+
+    (39) l_esc -> var . l_escs
+    (40) l_escs -> . virgula l_esc
+    (41) l_escs -> . empty
+    (81) empty -> .
+
+    virgula         shift and go to state 81
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    empty                          shift and go to state 80
+    l_escs                         shift and go to state 83
+
+state 45
+
+    (5) l_ids -> identificador comp . lids
+    (6) lids -> . virgula l_ids
+    (7) lids -> . empty
+    (81) empty -> .
+
+    virgula         shift and go to state 84
+    dois_pontos     reduce using rule 81 (empty -> .)
+
+    empty                          shift and go to state 86
+    lids                           shift and go to state 85
+
+state 46
+
+    (9) comp -> empty .
+
+    virgula         reduce using rule 9 (comp -> empty .)
+    dois_pontos     reduce using rule 9 (comp -> empty .)
+
+
+state 47
+
+    (8) comp -> abre_col . dim fecha_col
+    (10) dim -> . num_inteiro ponto ponto dims
+
+    num_inteiro     shift and go to state 88
+
+    dim                            shift and go to state 87
+
+state 48
+
+    (2) decl -> pr_declare l_ids dois_pontos . tipo ponto_virgula decl
+    (3) decl -> pr_declare l_ids dois_pontos . tipo_registro ponto_virgula decl
+    (13) tipo -> . pr_logico
+    (14) tipo -> . pr_caracter
+    (15) tipo -> . pr_inteiro
+    (16) tipo -> . pr_real
+    (17) tipo -> . identificador
+    (18) tipo_registro -> . pr_registro abre_par decl fecha_par
+
+    pr_logico       shift and go to state 95
+    pr_caracter     shift and go to state 96
+    pr_inteiro      shift and go to state 89
+    pr_real         shift and go to state 93
+    identificador   shift and go to state 90
+    pr_registro     shift and go to state 92
+
+    tipo                           shift and go to state 91
+    tipo_registro                  shift and go to state 94
+
+state 49
+
+    (36) ind -> ponto identificador . ind
+    (35) ind -> . abre_col num_inteiro fecha_col ind
+    (36) ind -> . ponto identificador ind
+    (37) ind -> . empty
+    (81) empty -> .
+
+    abre_col        shift and go to state 27
+    ponto           shift and go to state 25
+    virgula         reduce using rule 81 (empty -> .)
+    pr_saida        reduce using rule 81 (empty -> .)
+    pr_declare      reduce using rule 81 (empty -> .)
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+    fecha_par       reduce using rule 81 (empty -> .)
+    op_arit_adi     reduce using rule 81 (empty -> .)
+    op_arit_sub     reduce using rule 81 (empty -> .)
+    op_rel_igual    reduce using rule 81 (empty -> .)
+    op_rel_naoigual reduce using rule 81 (empty -> .)
+    op_rel_maior    reduce using rule 81 (empty -> .)
+    op_rel_maiorigual reduce using rule 81 (empty -> .)
+    op_rel_menor    reduce using rule 81 (empty -> .)
+    op_rel_menorigual reduce using rule 81 (empty -> .)
+    op_arit_mult    reduce using rule 81 (empty -> .)
+    op_arit_div     reduce using rule 81 (empty -> .)
+    op_arit_expo    reduce using rule 81 (empty -> .)
+    op_arit_rad     reduce using rule 81 (empty -> .)
+    op_log_and      reduce using rule 81 (empty -> .)
+    op_log_or       reduce using rule 81 (empty -> .)
+
+    ind                            shift and go to state 97
+    empty                          shift and go to state 28
+
+state 50
+
+    (35) ind -> abre_col num_inteiro . fecha_col ind
+
+    fecha_col       shift and go to state 98
+
+
+state 51
+
+    (45) procs -> pr_procmto identificador pr_entrada l_var decl cmds . pr_fim_procmto
+
+    pr_fim_procmto  shift and go to state 99
+
+
+state 52
+
+    (44) procs -> pr_procmto identificador pr_entrada l_var pr_saida l_var . decl cmds pr_fim_funcao
+    (2) decl -> . pr_declare l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> . pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+    (4) decl -> . empty
+    (81) empty -> .
+
+    pr_declare      shift and go to state 11
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+
+    decl                           shift and go to state 100
+    empty                          shift and go to state 10
+
+state 53
+
+    (32) l_vrs -> virgula var .
+
+    pr_saida        reduce using rule 32 (l_vrs -> virgula var .)
+    pr_declare      reduce using rule 32 (l_vrs -> virgula var .)
+    pr_leia         reduce using rule 32 (l_vrs -> virgula var .)
+    pr_escreva      reduce using rule 32 (l_vrs -> virgula var .)
+    identificador   reduce using rule 32 (l_vrs -> virgula var .)
+    pr_se           reduce using rule 32 (l_vrs -> virgula var .)
+    pr_para         reduce using rule 32 (l_vrs -> virgula var .)
+    pr_enqto        reduce using rule 32 (l_vrs -> virgula var .)
+    pr_fim_procmto  reduce using rule 32 (l_vrs -> virgula var .)
+    pr_fim_algo     reduce using rule 32 (l_vrs -> virgula var .)
+    pr_fim_enqto    reduce using rule 32 (l_vrs -> virgula var .)
+    pr_senao        reduce using rule 32 (l_vrs -> virgula var .)
+    pr_fim_se       reduce using rule 32 (l_vrs -> virgula var .)
+    pr_fim_funcao   reduce using rule 32 (l_vrs -> virgula var .)
+    pr_fim_para     reduce using rule 32 (l_vrs -> virgula var .)
+    fecha_par       reduce using rule 32 (l_vrs -> virgula var .)
+
+
+state 54
+
+    (26) cmds -> pr_para identificador op_atrib . num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> pr_para identificador op_atrib . identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+
+    num_inteiro     shift and go to state 101
+    identificador   shift and go to state 102
+
+
+state 55
+
+    (63) func -> pr_abs .
+
+    abre_par        reduce using rule 63 (func -> pr_abs .)
+
+
+state 56
+
+    (57) fat_a -> num_inteiro .
+
+    op_arit_adi     reduce using rule 57 (fat_a -> num_inteiro .)
+    op_arit_sub     reduce using rule 57 (fat_a -> num_inteiro .)
+    op_log_and      reduce using rule 57 (fat_a -> num_inteiro .)
+    op_log_or       reduce using rule 57 (fat_a -> num_inteiro .)
+    fecha_par       reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_leia         reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_escreva      reduce using rule 57 (fat_a -> num_inteiro .)
+    identificador   reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_se           reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_para         reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_enqto        reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_fim_algo     reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_fim_procmto  reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_fim_enqto    reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_senao        reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_fim_se       reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_fim_funcao   reduce using rule 57 (fat_a -> num_inteiro .)
+    pr_fim_para     reduce using rule 57 (fat_a -> num_inteiro .)
+    op_arit_mult    reduce using rule 57 (fat_a -> num_inteiro .)
+    op_arit_div     reduce using rule 57 (fat_a -> num_inteiro .)
+    op_arit_expo    reduce using rule 57 (fat_a -> num_inteiro .)
+    op_arit_rad     reduce using rule 57 (fat_a -> num_inteiro .)
+    op_rel_igual    reduce using rule 57 (fat_a -> num_inteiro .)
+    op_rel_naoigual reduce using rule 57 (fat_a -> num_inteiro .)
+    op_rel_maior    reduce using rule 57 (fat_a -> num_inteiro .)
+    op_rel_maiorigual reduce using rule 57 (fat_a -> num_inteiro .)
+    op_rel_menor    reduce using rule 57 (fat_a -> num_inteiro .)
+    op_rel_menorigual reduce using rule 57 (fat_a -> num_inteiro .)
+
+
+state 57
+
+    (70) fat_r -> fat_a .
+    (50) term_a -> fat_a . adisub term_a
+    (51) term_a -> fat_a .
+    (61) adisub -> . op_arit_adi
+    (62) adisub -> . op_arit_sub
+
+    op_rel_igual    reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_naoigual reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_maior    reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_maiorigual reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_menor    reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_menorigual reduce using rule 70 (fat_r -> fat_a .)
+    op_log_and      reduce using rule 70 (fat_r -> fat_a .)
+    op_log_or       reduce using rule 70 (fat_r -> fat_a .)
+    fecha_par       reduce using rule 70 (fat_r -> fat_a .)
+    pr_leia         reduce using rule 70 (fat_r -> fat_a .)
+    pr_escreva      reduce using rule 70 (fat_r -> fat_a .)
+    identificador   reduce using rule 70 (fat_r -> fat_a .)
+    pr_se           reduce using rule 70 (fat_r -> fat_a .)
+    pr_para         reduce using rule 70 (fat_r -> fat_a .)
+    pr_enqto        reduce using rule 70 (fat_r -> fat_a .)
+    pr_fim_algo     reduce using rule 70 (fat_r -> fat_a .)
+    pr_fim_procmto  reduce using rule 70 (fat_r -> fat_a .)
+    pr_fim_enqto    reduce using rule 70 (fat_r -> fat_a .)
+    pr_senao        reduce using rule 70 (fat_r -> fat_a .)
+    pr_fim_se       reduce using rule 70 (fat_r -> fat_a .)
+    pr_fim_funcao   reduce using rule 70 (fat_r -> fat_a .)
+    pr_fim_para     reduce using rule 70 (fat_r -> fat_a .)
+    op_arit_mult    reduce using rule 51 (term_a -> fat_a .)
+    op_arit_div     reduce using rule 51 (term_a -> fat_a .)
+    op_arit_expo    reduce using rule 51 (term_a -> fat_a .)
+    op_arit_rad     reduce using rule 51 (term_a -> fat_a .)
+    op_arit_adi     shift and go to state 104
+    op_arit_sub     shift and go to state 105
+
+    adisub                         shift and go to state 103
+
+state 58
+
+    (71) fat_r -> const_list .
+
+    op_rel_igual    reduce using rule 71 (fat_r -> const_list .)
+    op_rel_naoigual reduce using rule 71 (fat_r -> const_list .)
+    op_rel_maior    reduce using rule 71 (fat_r -> const_list .)
+    op_rel_maiorigual reduce using rule 71 (fat_r -> const_list .)
+    op_rel_menor    reduce using rule 71 (fat_r -> const_list .)
+    op_rel_menorigual reduce using rule 71 (fat_r -> const_list .)
+    op_log_and      reduce using rule 71 (fat_r -> const_list .)
+    op_log_or       reduce using rule 71 (fat_r -> const_list .)
+    fecha_par       reduce using rule 71 (fat_r -> const_list .)
+    pr_leia         reduce using rule 71 (fat_r -> const_list .)
+    pr_escreva      reduce using rule 71 (fat_r -> const_list .)
+    identificador   reduce using rule 71 (fat_r -> const_list .)
+    pr_se           reduce using rule 71 (fat_r -> const_list .)
+    pr_para         reduce using rule 71 (fat_r -> const_list .)
+    pr_enqto        reduce using rule 71 (fat_r -> const_list .)
+    pr_fim_algo     reduce using rule 71 (fat_r -> const_list .)
+    pr_fim_procmto  reduce using rule 71 (fat_r -> const_list .)
+    pr_fim_enqto    reduce using rule 71 (fat_r -> const_list .)
+    pr_senao        reduce using rule 71 (fat_r -> const_list .)
+    pr_fim_se       reduce using rule 71 (fat_r -> const_list .)
+    pr_fim_funcao   reduce using rule 71 (fat_r -> const_list .)
+    pr_fim_para     reduce using rule 71 (fat_r -> const_list .)
+
+
+state 59
+
+    (58) fat_a -> num_real .
+
+    op_arit_adi     reduce using rule 58 (fat_a -> num_real .)
+    op_arit_sub     reduce using rule 58 (fat_a -> num_real .)
+    op_log_and      reduce using rule 58 (fat_a -> num_real .)
+    op_log_or       reduce using rule 58 (fat_a -> num_real .)
+    fecha_par       reduce using rule 58 (fat_a -> num_real .)
+    pr_leia         reduce using rule 58 (fat_a -> num_real .)
+    pr_escreva      reduce using rule 58 (fat_a -> num_real .)
+    identificador   reduce using rule 58 (fat_a -> num_real .)
+    pr_se           reduce using rule 58 (fat_a -> num_real .)
+    pr_para         reduce using rule 58 (fat_a -> num_real .)
+    pr_enqto        reduce using rule 58 (fat_a -> num_real .)
+    pr_fim_algo     reduce using rule 58 (fat_a -> num_real .)
+    pr_fim_procmto  reduce using rule 58 (fat_a -> num_real .)
+    pr_fim_enqto    reduce using rule 58 (fat_a -> num_real .)
+    pr_senao        reduce using rule 58 (fat_a -> num_real .)
+    pr_fim_se       reduce using rule 58 (fat_a -> num_real .)
+    pr_fim_funcao   reduce using rule 58 (fat_a -> num_real .)
+    pr_fim_para     reduce using rule 58 (fat_a -> num_real .)
+    op_arit_mult    reduce using rule 58 (fat_a -> num_real .)
+    op_arit_div     reduce using rule 58 (fat_a -> num_real .)
+    op_arit_expo    reduce using rule 58 (fat_a -> num_real .)
+    op_arit_rad     reduce using rule 58 (fat_a -> num_real .)
+    op_rel_igual    reduce using rule 58 (fat_a -> num_real .)
+    op_rel_naoigual reduce using rule 58 (fat_a -> num_real .)
+    op_rel_maior    reduce using rule 58 (fat_a -> num_real .)
+    op_rel_maiorigual reduce using rule 58 (fat_a -> num_real .)
+    op_rel_menor    reduce using rule 58 (fat_a -> num_real .)
+    op_rel_menorigual reduce using rule 58 (fat_a -> num_real .)
+
+
+state 60
+
+    (67) exp_l -> op_log_nao . abre_par rel fecha_par
+
+    abre_par        shift and go to state 106
+
+
+state 61
+
+    (52) fat_a -> exp_a . op_arit_expo exp_a
+    (53) fat_a -> exp_a . op_arit_rad exp_a
+
+    op_arit_expo    shift and go to state 107
+    op_arit_rad     shift and go to state 108
+
+
+state 62
+
+    (54) fat_a -> abre_par . exp_a fecha_par
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    fat_a                          shift and go to state 110
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    exp_a                          shift and go to state 109
+
+state 63
+
+    (80) cond -> abre_par exp_l . fecha_par
+
+    fecha_par       shift and go to state 111
+
+
+state 64
+
+    (66) exp_l -> rel . op_log exp_l
+    (68) exp_l -> rel .
+    (72) op_log -> . op_log_and
+    (73) op_log -> . op_log_or
+
+    pr_leia         reduce using rule 68 (exp_l -> rel .)
+    pr_escreva      reduce using rule 68 (exp_l -> rel .)
+    identificador   reduce using rule 68 (exp_l -> rel .)
+    pr_se           reduce using rule 68 (exp_l -> rel .)
+    pr_para         reduce using rule 68 (exp_l -> rel .)
+    pr_enqto        reduce using rule 68 (exp_l -> rel .)
+    pr_fim_algo     reduce using rule 68 (exp_l -> rel .)
+    pr_fim_procmto  reduce using rule 68 (exp_l -> rel .)
+    pr_fim_enqto    reduce using rule 68 (exp_l -> rel .)
+    pr_senao        reduce using rule 68 (exp_l -> rel .)
+    pr_fim_se       reduce using rule 68 (exp_l -> rel .)
+    pr_fim_funcao   reduce using rule 68 (exp_l -> rel .)
+    pr_fim_para     reduce using rule 68 (exp_l -> rel .)
+    fecha_par       reduce using rule 68 (exp_l -> rel .)
+    op_log_and      shift and go to state 113
+    op_log_or       shift and go to state 114
+
+    op_log                         shift and go to state 112
+
+state 65
+
+    (56) fat_a -> var .
+
+    op_arit_adi     reduce using rule 56 (fat_a -> var .)
+    op_arit_sub     reduce using rule 56 (fat_a -> var .)
+    op_log_and      reduce using rule 56 (fat_a -> var .)
+    op_log_or       reduce using rule 56 (fat_a -> var .)
+    fecha_par       reduce using rule 56 (fat_a -> var .)
+    pr_leia         reduce using rule 56 (fat_a -> var .)
+    pr_escreva      reduce using rule 56 (fat_a -> var .)
+    identificador   reduce using rule 56 (fat_a -> var .)
+    pr_se           reduce using rule 56 (fat_a -> var .)
+    pr_para         reduce using rule 56 (fat_a -> var .)
+    pr_enqto        reduce using rule 56 (fat_a -> var .)
+    pr_fim_algo     reduce using rule 56 (fat_a -> var .)
+    pr_fim_procmto  reduce using rule 56 (fat_a -> var .)
+    pr_fim_enqto    reduce using rule 56 (fat_a -> var .)
+    pr_senao        reduce using rule 56 (fat_a -> var .)
+    pr_fim_se       reduce using rule 56 (fat_a -> var .)
+    pr_fim_funcao   reduce using rule 56 (fat_a -> var .)
+    pr_fim_para     reduce using rule 56 (fat_a -> var .)
+    op_arit_mult    reduce using rule 56 (fat_a -> var .)
+    op_arit_div     reduce using rule 56 (fat_a -> var .)
+    op_arit_expo    reduce using rule 56 (fat_a -> var .)
+    op_arit_rad     reduce using rule 56 (fat_a -> var .)
+    op_rel_igual    reduce using rule 56 (fat_a -> var .)
+    op_rel_naoigual reduce using rule 56 (fat_a -> var .)
+    op_rel_maior    reduce using rule 56 (fat_a -> var .)
+    op_rel_maiorigual reduce using rule 56 (fat_a -> var .)
+    op_rel_menor    reduce using rule 56 (fat_a -> var .)
+    op_rel_menorigual reduce using rule 56 (fat_a -> var .)
+
+
+state 66
+
+    (69) rel -> fat_r . op_rel fat_r
+    (74) op_rel -> . op_rel_igual
+    (75) op_rel -> . op_rel_naoigual
+    (76) op_rel -> . op_rel_maior
+    (77) op_rel -> . op_rel_maiorigual
+    (78) op_rel -> . op_rel_menor
+    (79) op_rel -> . op_rel_menorigual
+
+    op_rel_igual    shift and go to state 116
+    op_rel_naoigual shift and go to state 117
+    op_rel_maior    shift and go to state 121
+    op_rel_maiorigual shift and go to state 115
+    op_rel_menor    shift and go to state 118
+    op_rel_menorigual shift and go to state 119
+
+    op_rel                         shift and go to state 120
+
+state 67
+
+    (55) fat_a -> func . abre_par l_var fecha_par
+
+    abre_par        shift and go to state 122
+
+
+state 68
+
+    (48) exp_a -> term_a . muldiv exp_a
+    (49) exp_a -> term_a .
+    (59) muldiv -> . op_arit_mult
+    (60) muldiv -> . op_arit_div
+
+  ! shift/reduce conflict for op_arit_mult resolved as shift
+  ! shift/reduce conflict for op_arit_div resolved as shift
+    op_arit_adi     reduce using rule 49 (exp_a -> term_a .)
+    op_arit_sub     reduce using rule 49 (exp_a -> term_a .)
+    op_arit_expo    reduce using rule 49 (exp_a -> term_a .)
+    op_arit_rad     reduce using rule 49 (exp_a -> term_a .)
+    pr_leia         reduce using rule 49 (exp_a -> term_a .)
+    pr_escreva      reduce using rule 49 (exp_a -> term_a .)
+    identificador   reduce using rule 49 (exp_a -> term_a .)
+    pr_se           reduce using rule 49 (exp_a -> term_a .)
+    pr_para         reduce using rule 49 (exp_a -> term_a .)
+    pr_enqto        reduce using rule 49 (exp_a -> term_a .)
+    pr_fim_algo     reduce using rule 49 (exp_a -> term_a .)
+    pr_fim_procmto  reduce using rule 49 (exp_a -> term_a .)
+    pr_fim_enqto    reduce using rule 49 (exp_a -> term_a .)
+    pr_senao        reduce using rule 49 (exp_a -> term_a .)
+    pr_fim_se       reduce using rule 49 (exp_a -> term_a .)
+    pr_fim_funcao   reduce using rule 49 (exp_a -> term_a .)
+    pr_fim_para     reduce using rule 49 (exp_a -> term_a .)
+    fecha_par       reduce using rule 49 (exp_a -> term_a .)
+    op_rel_igual    reduce using rule 49 (exp_a -> term_a .)
+    op_rel_naoigual reduce using rule 49 (exp_a -> term_a .)
+    op_rel_maior    reduce using rule 49 (exp_a -> term_a .)
+    op_rel_maiorigual reduce using rule 49 (exp_a -> term_a .)
+    op_rel_menor    reduce using rule 49 (exp_a -> term_a .)
+    op_rel_menorigual reduce using rule 49 (exp_a -> term_a .)
+    op_log_and      reduce using rule 49 (exp_a -> term_a .)
+    op_log_or       reduce using rule 49 (exp_a -> term_a .)
+    op_arit_mult    shift and go to state 124
+    op_arit_div     shift and go to state 123
+
+  ! op_arit_mult    [ reduce using rule 49 (exp_a -> term_a .) ]
+  ! op_arit_div     [ reduce using rule 49 (exp_a -> term_a .) ]
+
+    muldiv                         shift and go to state 125
+
+state 69
+
+    (65) func -> pr_resto .
+
+    abre_par        reduce using rule 65 (func -> pr_resto .)
+
+
+state 70
+
+    (64) func -> pr_trunca .
+
+    abre_par        reduce using rule 64 (func -> pr_trunca .)
+
+
+state 71
+
+    (25) cmds -> pr_se cond pr_entao . cmds sen pr_fim_se cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 126
+    empty                          shift and go to state 18
+
+state 72
+
+    (28) cmds -> pr_enqto cond cmds . pr_fim_enqto cmds
+
+    pr_fim_enqto    shift and go to state 127
+
+
+state 73
+
+    (22) cmds -> pr_leia l_var cmds .
+
+    pr_fim_para     reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+    pr_fim_algo     reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+    pr_fim_procmto  reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+    pr_fim_enqto    reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+    pr_senao        reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+    pr_fim_se       reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+    pr_fim_funcao   reduce using rule 22 (cmds -> pr_leia l_var cmds .)
+
+
+state 74
+
+    (50) term_a -> fat_a . adisub term_a
+    (51) term_a -> fat_a .
+    (70) fat_r -> fat_a .
+    (61) adisub -> . op_arit_adi
+    (62) adisub -> . op_arit_sub
+
+    op_arit_mult    reduce using rule 51 (term_a -> fat_a .)
+    op_arit_div     reduce using rule 51 (term_a -> fat_a .)
+    op_arit_expo    reduce using rule 51 (term_a -> fat_a .)
+    op_arit_rad     reduce using rule 51 (term_a -> fat_a .)
+    pr_leia         reduce using rule 51 (term_a -> fat_a .)
+    pr_escreva      reduce using rule 51 (term_a -> fat_a .)
+    identificador   reduce using rule 51 (term_a -> fat_a .)
+    pr_se           reduce using rule 51 (term_a -> fat_a .)
+    pr_para         reduce using rule 51 (term_a -> fat_a .)
+    pr_enqto        reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_algo     reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_procmto  reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_enqto    reduce using rule 51 (term_a -> fat_a .)
+    pr_senao        reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_se       reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_funcao   reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_para     reduce using rule 51 (term_a -> fat_a .)
+    op_rel_igual    reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_naoigual reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_maior    reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_maiorigual reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_menor    reduce using rule 70 (fat_r -> fat_a .)
+    op_rel_menorigual reduce using rule 70 (fat_r -> fat_a .)
+    op_arit_adi     shift and go to state 104
+    op_arit_sub     shift and go to state 105
+
+    adisub                         shift and go to state 103
+
+state 75
+
+    (47) exp -> exp_a .
+    (52) fat_a -> exp_a . op_arit_expo exp_a
+    (53) fat_a -> exp_a . op_arit_rad exp_a
+
+    pr_leia         reduce using rule 47 (exp -> exp_a .)
+    pr_escreva      reduce using rule 47 (exp -> exp_a .)
+    identificador   reduce using rule 47 (exp -> exp_a .)
+    pr_se           reduce using rule 47 (exp -> exp_a .)
+    pr_para         reduce using rule 47 (exp -> exp_a .)
+    pr_enqto        reduce using rule 47 (exp -> exp_a .)
+    pr_fim_algo     reduce using rule 47 (exp -> exp_a .)
+    pr_fim_procmto  reduce using rule 47 (exp -> exp_a .)
+    pr_fim_enqto    reduce using rule 47 (exp -> exp_a .)
+    pr_senao        reduce using rule 47 (exp -> exp_a .)
+    pr_fim_se       reduce using rule 47 (exp -> exp_a .)
+    pr_fim_funcao   reduce using rule 47 (exp -> exp_a .)
+    pr_fim_para     reduce using rule 47 (exp -> exp_a .)
+    op_arit_expo    shift and go to state 107
+    op_arit_rad     shift and go to state 108
+
+
+state 76
+
+    (46) exp -> exp_l .
+
+    pr_leia         reduce using rule 46 (exp -> exp_l .)
+    pr_escreva      reduce using rule 46 (exp -> exp_l .)
+    identificador   reduce using rule 46 (exp -> exp_l .)
+    pr_se           reduce using rule 46 (exp -> exp_l .)
+    pr_para         reduce using rule 46 (exp -> exp_l .)
+    pr_enqto        reduce using rule 46 (exp -> exp_l .)
+    pr_fim_algo     reduce using rule 46 (exp -> exp_l .)
+    pr_fim_procmto  reduce using rule 46 (exp -> exp_l .)
+    pr_fim_enqto    reduce using rule 46 (exp -> exp_l .)
+    pr_senao        reduce using rule 46 (exp -> exp_l .)
+    pr_fim_se       reduce using rule 46 (exp -> exp_l .)
+    pr_fim_funcao   reduce using rule 46 (exp -> exp_l .)
+    pr_fim_para     reduce using rule 46 (exp -> exp_l .)
+
+
+state 77
+
+    (24) cmds -> identificador op_atrib exp . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 128
+    empty                          shift and go to state 18
+
+state 78
+
+    (29) cmds -> identificador abre_par l_var . fecha_par cmds
+
+    fecha_par       shift and go to state 129
+
+
+state 79
+
+    (23) cmds -> pr_escreva l_esc cmds .
+
+    pr_fim_para     reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+    pr_fim_algo     reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+    pr_fim_procmto  reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+    pr_fim_enqto    reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+    pr_senao        reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+    pr_fim_se       reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+    pr_fim_funcao   reduce using rule 23 (cmds -> pr_escreva l_esc cmds .)
+
+
+state 80
+
+    (41) l_escs -> empty .
+
+    pr_leia         reduce using rule 41 (l_escs -> empty .)
+    pr_escreva      reduce using rule 41 (l_escs -> empty .)
+    identificador   reduce using rule 41 (l_escs -> empty .)
+    pr_se           reduce using rule 41 (l_escs -> empty .)
+    pr_para         reduce using rule 41 (l_escs -> empty .)
+    pr_enqto        reduce using rule 41 (l_escs -> empty .)
+    pr_fim_algo     reduce using rule 41 (l_escs -> empty .)
+    pr_fim_procmto  reduce using rule 41 (l_escs -> empty .)
+    pr_fim_enqto    reduce using rule 41 (l_escs -> empty .)
+    pr_senao        reduce using rule 41 (l_escs -> empty .)
+    pr_fim_se       reduce using rule 41 (l_escs -> empty .)
+    pr_fim_funcao   reduce using rule 41 (l_escs -> empty .)
+    pr_fim_para     reduce using rule 41 (l_escs -> empty .)
+
+
+state 81
+
+    (40) l_escs -> virgula . l_esc
+    (38) l_esc -> . const_list l_escs
+    (39) l_esc -> . var l_escs
+    (34) var -> . identificador ind
+
+    const_list      shift and go to state 43
+    identificador   shift and go to state 12
+
+    var                            shift and go to state 44
+    l_esc                          shift and go to state 130
+
+state 82
+
+    (38) l_esc -> const_list l_escs .
+
+    pr_leia         reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_escreva      reduce using rule 38 (l_esc -> const_list l_escs .)
+    identificador   reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_se           reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_para         reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_enqto        reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_fim_algo     reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_fim_procmto  reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_fim_enqto    reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_senao        reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_fim_se       reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_fim_funcao   reduce using rule 38 (l_esc -> const_list l_escs .)
+    pr_fim_para     reduce using rule 38 (l_esc -> const_list l_escs .)
+
+
+state 83
+
+    (39) l_esc -> var l_escs .
+
+    pr_leia         reduce using rule 39 (l_esc -> var l_escs .)
+    pr_escreva      reduce using rule 39 (l_esc -> var l_escs .)
+    identificador   reduce using rule 39 (l_esc -> var l_escs .)
+    pr_se           reduce using rule 39 (l_esc -> var l_escs .)
+    pr_para         reduce using rule 39 (l_esc -> var l_escs .)
+    pr_enqto        reduce using rule 39 (l_esc -> var l_escs .)
+    pr_fim_algo     reduce using rule 39 (l_esc -> var l_escs .)
+    pr_fim_procmto  reduce using rule 39 (l_esc -> var l_escs .)
+    pr_fim_enqto    reduce using rule 39 (l_esc -> var l_escs .)
+    pr_senao        reduce using rule 39 (l_esc -> var l_escs .)
+    pr_fim_se       reduce using rule 39 (l_esc -> var l_escs .)
+    pr_fim_funcao   reduce using rule 39 (l_esc -> var l_escs .)
+    pr_fim_para     reduce using rule 39 (l_esc -> var l_escs .)
+
+
+state 84
+
+    (6) lids -> virgula . l_ids
+    (5) l_ids -> . identificador comp lids
+
+    identificador   shift and go to state 23
+
+    l_ids                          shift and go to state 131
+
+state 85
+
+    (5) l_ids -> identificador comp lids .
+
+    dois_pontos     reduce using rule 5 (l_ids -> identificador comp lids .)
+
+
+state 86
+
+    (7) lids -> empty .
+
+    dois_pontos     reduce using rule 7 (lids -> empty .)
+
+
+state 87
+
+    (8) comp -> abre_col dim . fecha_col
+
+    fecha_col       shift and go to state 132
+
+
+state 88
+
+    (10) dim -> num_inteiro . ponto ponto dims
+
+    ponto           shift and go to state 133
+
+
+state 89
+
+    (15) tipo -> pr_inteiro .
+
+    ponto_virgula   reduce using rule 15 (tipo -> pr_inteiro .)
+
+
+state 90
+
+    (17) tipo -> identificador .
+
+    ponto_virgula   reduce using rule 17 (tipo -> identificador .)
+
+
+state 91
+
+    (2) decl -> pr_declare l_ids dois_pontos tipo . ponto_virgula decl
+
+    ponto_virgula   shift and go to state 134
+
+
+state 92
+
+    (18) tipo_registro -> pr_registro . abre_par decl fecha_par
+
+    abre_par        shift and go to state 135
+
+
+state 93
+
+    (16) tipo -> pr_real .
+
+    ponto_virgula   reduce using rule 16 (tipo -> pr_real .)
+
+
+state 94
+
+    (3) decl -> pr_declare l_ids dois_pontos tipo_registro . ponto_virgula decl
+
+    ponto_virgula   shift and go to state 136
+
+
+state 95
+
+    (13) tipo -> pr_logico .
+
+    ponto_virgula   reduce using rule 13 (tipo -> pr_logico .)
+
+
+state 96
+
+    (14) tipo -> pr_caracter .
+
+    ponto_virgula   reduce using rule 14 (tipo -> pr_caracter .)
+
+
+state 97
+
+    (36) ind -> ponto identificador ind .
+
+    virgula         reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_saida        reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_declare      reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_leia         reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_escreva      reduce using rule 36 (ind -> ponto identificador ind .)
+    identificador   reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_se           reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_para         reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_enqto        reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_fim_procmto  reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_fim_algo     reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_fim_enqto    reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_senao        reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_fim_se       reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_fim_funcao   reduce using rule 36 (ind -> ponto identificador ind .)
+    pr_fim_para     reduce using rule 36 (ind -> ponto identificador ind .)
+    fecha_par       reduce using rule 36 (ind -> ponto identificador ind .)
+    op_arit_adi     reduce using rule 36 (ind -> ponto identificador ind .)
+    op_arit_sub     reduce using rule 36 (ind -> ponto identificador ind .)
+    op_rel_igual    reduce using rule 36 (ind -> ponto identificador ind .)
+    op_rel_naoigual reduce using rule 36 (ind -> ponto identificador ind .)
+    op_rel_maior    reduce using rule 36 (ind -> ponto identificador ind .)
+    op_rel_maiorigual reduce using rule 36 (ind -> ponto identificador ind .)
+    op_rel_menor    reduce using rule 36 (ind -> ponto identificador ind .)
+    op_rel_menorigual reduce using rule 36 (ind -> ponto identificador ind .)
+    op_arit_mult    reduce using rule 36 (ind -> ponto identificador ind .)
+    op_arit_div     reduce using rule 36 (ind -> ponto identificador ind .)
+    op_arit_expo    reduce using rule 36 (ind -> ponto identificador ind .)
+    op_arit_rad     reduce using rule 36 (ind -> ponto identificador ind .)
+    op_log_and      reduce using rule 36 (ind -> ponto identificador ind .)
+    op_log_or       reduce using rule 36 (ind -> ponto identificador ind .)
+
+
+state 98
+
+    (35) ind -> abre_col num_inteiro fecha_col . ind
+    (35) ind -> . abre_col num_inteiro fecha_col ind
+    (36) ind -> . ponto identificador ind
+    (37) ind -> . empty
+    (81) empty -> .
+
+    abre_col        shift and go to state 27
+    ponto           shift and go to state 25
+    virgula         reduce using rule 81 (empty -> .)
+    pr_saida        reduce using rule 81 (empty -> .)
+    pr_declare      reduce using rule 81 (empty -> .)
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+    fecha_par       reduce using rule 81 (empty -> .)
+    op_arit_adi     reduce using rule 81 (empty -> .)
+    op_arit_sub     reduce using rule 81 (empty -> .)
+    op_rel_igual    reduce using rule 81 (empty -> .)
+    op_rel_naoigual reduce using rule 81 (empty -> .)
+    op_rel_maior    reduce using rule 81 (empty -> .)
+    op_rel_maiorigual reduce using rule 81 (empty -> .)
+    op_rel_menor    reduce using rule 81 (empty -> .)
+    op_rel_menorigual reduce using rule 81 (empty -> .)
+    op_arit_mult    reduce using rule 81 (empty -> .)
+    op_arit_div     reduce using rule 81 (empty -> .)
+    op_arit_expo    reduce using rule 81 (empty -> .)
+    op_arit_rad     reduce using rule 81 (empty -> .)
+    op_log_and      reduce using rule 81 (empty -> .)
+    op_log_or       reduce using rule 81 (empty -> .)
+
+    ind                            shift and go to state 137
+    empty                          shift and go to state 28
+
+state 99
+
+    (45) procs -> pr_procmto identificador pr_entrada l_var decl cmds pr_fim_procmto .
+
+    pr_inicio       reduce using rule 45 (procs -> pr_procmto identificador pr_entrada l_var decl cmds pr_fim_procmto .)
+
+
+state 100
+
+    (44) procs -> pr_procmto identificador pr_entrada l_var pr_saida l_var decl . cmds pr_fim_funcao
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 138
+    empty                          shift and go to state 18
+
+state 101
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro . pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+
+    pr_ate          shift and go to state 139
+
+
+state 102
+
+    (27) cmds -> pr_para identificador op_atrib identificador . pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+
+    pr_ate          shift and go to state 140
+
+
+state 103
+
+    (50) term_a -> fat_a adisub . term_a
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 141
+    fat_a                          shift and go to state 110
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    exp_a                          shift and go to state 61
+
+state 104
+
+    (61) adisub -> op_arit_adi .
+
+    abre_par        reduce using rule 61 (adisub -> op_arit_adi .)
+    num_inteiro     reduce using rule 61 (adisub -> op_arit_adi .)
+    num_real        reduce using rule 61 (adisub -> op_arit_adi .)
+    pr_abs          reduce using rule 61 (adisub -> op_arit_adi .)
+    pr_trunca       reduce using rule 61 (adisub -> op_arit_adi .)
+    pr_resto        reduce using rule 61 (adisub -> op_arit_adi .)
+    identificador   reduce using rule 61 (adisub -> op_arit_adi .)
+
+
+state 105
+
+    (62) adisub -> op_arit_sub .
+
+    abre_par        reduce using rule 62 (adisub -> op_arit_sub .)
+    num_inteiro     reduce using rule 62 (adisub -> op_arit_sub .)
+    num_real        reduce using rule 62 (adisub -> op_arit_sub .)
+    pr_abs          reduce using rule 62 (adisub -> op_arit_sub .)
+    pr_trunca       reduce using rule 62 (adisub -> op_arit_sub .)
+    pr_resto        reduce using rule 62 (adisub -> op_arit_sub .)
+    identificador   reduce using rule 62 (adisub -> op_arit_sub .)
+
+
+state 106
+
+    (67) exp_l -> op_log_nao abre_par . rel fecha_par
+    (69) rel -> . fat_r op_rel fat_r
+    (70) fat_r -> . fat_a
+    (71) fat_r -> . const_list
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+
+    const_list      shift and go to state 58
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    exp_a                          shift and go to state 61
+    rel                            shift and go to state 142
+    fat_a                          shift and go to state 57
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    fat_r                          shift and go to state 66
+
+state 107
+
+    (52) fat_a -> exp_a op_arit_expo . exp_a
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    fat_a                          shift and go to state 110
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    exp_a                          shift and go to state 143
+
+state 108
+
+    (53) fat_a -> exp_a op_arit_rad . exp_a
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    fat_a                          shift and go to state 110
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    exp_a                          shift and go to state 144
+
+state 109
+
+    (54) fat_a -> abre_par exp_a . fecha_par
+    (52) fat_a -> exp_a . op_arit_expo exp_a
+    (53) fat_a -> exp_a . op_arit_rad exp_a
+
+    fecha_par       shift and go to state 145
+    op_arit_expo    shift and go to state 107
+    op_arit_rad     shift and go to state 108
+
+
+state 110
+
+    (50) term_a -> fat_a . adisub term_a
+    (51) term_a -> fat_a .
+    (61) adisub -> . op_arit_adi
+    (62) adisub -> . op_arit_sub
+
+  ! shift/reduce conflict for op_arit_adi resolved as shift
+  ! shift/reduce conflict for op_arit_sub resolved as shift
+    op_arit_mult    reduce using rule 51 (term_a -> fat_a .)
+    op_arit_div     reduce using rule 51 (term_a -> fat_a .)
+    op_arit_expo    reduce using rule 51 (term_a -> fat_a .)
+    op_arit_rad     reduce using rule 51 (term_a -> fat_a .)
+    pr_leia         reduce using rule 51 (term_a -> fat_a .)
+    pr_escreva      reduce using rule 51 (term_a -> fat_a .)
+    identificador   reduce using rule 51 (term_a -> fat_a .)
+    pr_se           reduce using rule 51 (term_a -> fat_a .)
+    pr_para         reduce using rule 51 (term_a -> fat_a .)
+    pr_enqto        reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_algo     reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_procmto  reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_enqto    reduce using rule 51 (term_a -> fat_a .)
+    pr_senao        reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_se       reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_funcao   reduce using rule 51 (term_a -> fat_a .)
+    pr_fim_para     reduce using rule 51 (term_a -> fat_a .)
+    fecha_par       reduce using rule 51 (term_a -> fat_a .)
+    op_rel_igual    reduce using rule 51 (term_a -> fat_a .)
+    op_rel_naoigual reduce using rule 51 (term_a -> fat_a .)
+    op_rel_maior    reduce using rule 51 (term_a -> fat_a .)
+    op_rel_maiorigual reduce using rule 51 (term_a -> fat_a .)
+    op_rel_menor    reduce using rule 51 (term_a -> fat_a .)
+    op_rel_menorigual reduce using rule 51 (term_a -> fat_a .)
+    op_log_and      reduce using rule 51 (term_a -> fat_a .)
+    op_log_or       reduce using rule 51 (term_a -> fat_a .)
+    op_arit_adi     shift and go to state 104
+    op_arit_sub     shift and go to state 105
+
+  ! op_arit_adi     [ reduce using rule 51 (term_a -> fat_a .) ]
+  ! op_arit_sub     [ reduce using rule 51 (term_a -> fat_a .) ]
+
+    adisub                         shift and go to state 103
+
+state 111
+
+    (80) cond -> abre_par exp_l fecha_par .
+
+    pr_entao        reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    pr_leia         reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    pr_escreva      reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    identificador   reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    pr_se           reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    pr_para         reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    pr_enqto        reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+    pr_fim_enqto    reduce using rule 80 (cond -> abre_par exp_l fecha_par .)
+
+
+state 112
+
+    (66) exp_l -> rel op_log . exp_l
+    (66) exp_l -> . rel op_log exp_l
+    (67) exp_l -> . op_log_nao abre_par rel fecha_par
+    (68) exp_l -> . rel
+    (69) rel -> . fat_r op_rel fat_r
+    (70) fat_r -> . fat_a
+    (71) fat_r -> . const_list
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+
+    op_log_nao      shift and go to state 60
+    const_list      shift and go to state 58
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    exp_a                          shift and go to state 61
+    func                           shift and go to state 67
+    exp_l                          shift and go to state 146
+    fat_a                          shift and go to state 57
+    var                            shift and go to state 65
+    rel                            shift and go to state 64
+    fat_r                          shift and go to state 66
+
+state 113
+
+    (72) op_log -> op_log_and .
+
+    op_log_nao      reduce using rule 72 (op_log -> op_log_and .)
+    const_list      reduce using rule 72 (op_log -> op_log_and .)
+    abre_par        reduce using rule 72 (op_log -> op_log_and .)
+    num_inteiro     reduce using rule 72 (op_log -> op_log_and .)
+    num_real        reduce using rule 72 (op_log -> op_log_and .)
+    pr_abs          reduce using rule 72 (op_log -> op_log_and .)
+    pr_trunca       reduce using rule 72 (op_log -> op_log_and .)
+    pr_resto        reduce using rule 72 (op_log -> op_log_and .)
+    identificador   reduce using rule 72 (op_log -> op_log_and .)
+
+
+state 114
+
+    (73) op_log -> op_log_or .
+
+    op_log_nao      reduce using rule 73 (op_log -> op_log_or .)
+    const_list      reduce using rule 73 (op_log -> op_log_or .)
+    abre_par        reduce using rule 73 (op_log -> op_log_or .)
+    num_inteiro     reduce using rule 73 (op_log -> op_log_or .)
+    num_real        reduce using rule 73 (op_log -> op_log_or .)
+    pr_abs          reduce using rule 73 (op_log -> op_log_or .)
+    pr_trunca       reduce using rule 73 (op_log -> op_log_or .)
+    pr_resto        reduce using rule 73 (op_log -> op_log_or .)
+    identificador   reduce using rule 73 (op_log -> op_log_or .)
+
+
+state 115
+
+    (77) op_rel -> op_rel_maiorigual .
+
+    const_list      reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    abre_par        reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    num_inteiro     reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    num_real        reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    pr_abs          reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    pr_trunca       reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    pr_resto        reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+    identificador   reduce using rule 77 (op_rel -> op_rel_maiorigual .)
+
+
+state 116
+
+    (74) op_rel -> op_rel_igual .
+
+    const_list      reduce using rule 74 (op_rel -> op_rel_igual .)
+    abre_par        reduce using rule 74 (op_rel -> op_rel_igual .)
+    num_inteiro     reduce using rule 74 (op_rel -> op_rel_igual .)
+    num_real        reduce using rule 74 (op_rel -> op_rel_igual .)
+    pr_abs          reduce using rule 74 (op_rel -> op_rel_igual .)
+    pr_trunca       reduce using rule 74 (op_rel -> op_rel_igual .)
+    pr_resto        reduce using rule 74 (op_rel -> op_rel_igual .)
+    identificador   reduce using rule 74 (op_rel -> op_rel_igual .)
+
+
+state 117
+
+    (75) op_rel -> op_rel_naoigual .
+
+    const_list      reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    abre_par        reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    num_inteiro     reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    num_real        reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    pr_abs          reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    pr_trunca       reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    pr_resto        reduce using rule 75 (op_rel -> op_rel_naoigual .)
+    identificador   reduce using rule 75 (op_rel -> op_rel_naoigual .)
+
+
+state 118
+
+    (78) op_rel -> op_rel_menor .
+
+    const_list      reduce using rule 78 (op_rel -> op_rel_menor .)
+    abre_par        reduce using rule 78 (op_rel -> op_rel_menor .)
+    num_inteiro     reduce using rule 78 (op_rel -> op_rel_menor .)
+    num_real        reduce using rule 78 (op_rel -> op_rel_menor .)
+    pr_abs          reduce using rule 78 (op_rel -> op_rel_menor .)
+    pr_trunca       reduce using rule 78 (op_rel -> op_rel_menor .)
+    pr_resto        reduce using rule 78 (op_rel -> op_rel_menor .)
+    identificador   reduce using rule 78 (op_rel -> op_rel_menor .)
+
+
+state 119
+
+    (79) op_rel -> op_rel_menorigual .
+
+    const_list      reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    abre_par        reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    num_inteiro     reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    num_real        reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    pr_abs          reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    pr_trunca       reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    pr_resto        reduce using rule 79 (op_rel -> op_rel_menorigual .)
+    identificador   reduce using rule 79 (op_rel -> op_rel_menorigual .)
+
+
+state 120
+
+    (69) rel -> fat_r op_rel . fat_r
+    (70) fat_r -> . fat_a
+    (71) fat_r -> . const_list
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+
+    const_list      shift and go to state 58
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    exp_a                          shift and go to state 61
+    fat_a                          shift and go to state 57
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    fat_r                          shift and go to state 147
+
+state 121
+
+    (76) op_rel -> op_rel_maior .
+
+    const_list      reduce using rule 76 (op_rel -> op_rel_maior .)
+    abre_par        reduce using rule 76 (op_rel -> op_rel_maior .)
+    num_inteiro     reduce using rule 76 (op_rel -> op_rel_maior .)
+    num_real        reduce using rule 76 (op_rel -> op_rel_maior .)
+    pr_abs          reduce using rule 76 (op_rel -> op_rel_maior .)
+    pr_trunca       reduce using rule 76 (op_rel -> op_rel_maior .)
+    pr_resto        reduce using rule 76 (op_rel -> op_rel_maior .)
+    identificador   reduce using rule 76 (op_rel -> op_rel_maior .)
+
+
+state 122
+
+    (55) fat_a -> func abre_par . l_var fecha_par
+    (31) l_var -> . var l_vrs
+    (34) var -> . identificador ind
+
+    identificador   shift and go to state 12
+
+    var                            shift and go to state 14
+    l_var                          shift and go to state 148
+
+state 123
+
+    (60) muldiv -> op_arit_div .
+
+    abre_par        reduce using rule 60 (muldiv -> op_arit_div .)
+    num_inteiro     reduce using rule 60 (muldiv -> op_arit_div .)
+    num_real        reduce using rule 60 (muldiv -> op_arit_div .)
+    pr_abs          reduce using rule 60 (muldiv -> op_arit_div .)
+    pr_trunca       reduce using rule 60 (muldiv -> op_arit_div .)
+    pr_resto        reduce using rule 60 (muldiv -> op_arit_div .)
+    identificador   reduce using rule 60 (muldiv -> op_arit_div .)
+
+
+state 124
+
+    (59) muldiv -> op_arit_mult .
+
+    abre_par        reduce using rule 59 (muldiv -> op_arit_mult .)
+    num_inteiro     reduce using rule 59 (muldiv -> op_arit_mult .)
+    num_real        reduce using rule 59 (muldiv -> op_arit_mult .)
+    pr_abs          reduce using rule 59 (muldiv -> op_arit_mult .)
+    pr_trunca       reduce using rule 59 (muldiv -> op_arit_mult .)
+    pr_resto        reduce using rule 59 (muldiv -> op_arit_mult .)
+    identificador   reduce using rule 59 (muldiv -> op_arit_mult .)
+
+
+state 125
+
+    (48) exp_a -> term_a muldiv . exp_a
+    (48) exp_a -> . term_a muldiv exp_a
+    (49) exp_a -> . term_a
+    (50) term_a -> . fat_a adisub term_a
+    (51) term_a -> . fat_a
+    (52) fat_a -> . exp_a op_arit_expo exp_a
+    (53) fat_a -> . exp_a op_arit_rad exp_a
+    (54) fat_a -> . abre_par exp_a fecha_par
+    (55) fat_a -> . func abre_par l_var fecha_par
+    (56) fat_a -> . var
+    (57) fat_a -> . num_inteiro
+    (58) fat_a -> . num_real
+    (63) func -> . pr_abs
+    (64) func -> . pr_trunca
+    (65) func -> . pr_resto
+    (34) var -> . identificador ind
+
+    abre_par        shift and go to state 62
+    num_inteiro     shift and go to state 56
+    num_real        shift and go to state 59
+    pr_abs          shift and go to state 55
+    pr_trunca       shift and go to state 70
+    pr_resto        shift and go to state 69
+    identificador   shift and go to state 12
+
+    term_a                         shift and go to state 68
+    fat_a                          shift and go to state 110
+    func                           shift and go to state 67
+    var                            shift and go to state 65
+    exp_a                          shift and go to state 149
+
+state 126
+
+    (25) cmds -> pr_se cond pr_entao cmds . sen pr_fim_se cmds
+    (42) sen -> . pr_senao cmds
+    (43) sen -> . empty
+    (81) empty -> .
+
+    pr_senao        shift and go to state 150
+    pr_fim_se       reduce using rule 81 (empty -> .)
+
+    sen                            shift and go to state 151
+    empty                          shift and go to state 152
+
+state 127
+
+    (28) cmds -> pr_enqto cond cmds pr_fim_enqto . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 153
+    empty                          shift and go to state 18
+
+state 128
+
+    (24) cmds -> identificador op_atrib exp cmds .
+
+    pr_fim_para     reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+    pr_fim_algo     reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+    pr_fim_procmto  reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+    pr_fim_enqto    reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+    pr_senao        reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+    pr_fim_se       reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+    pr_fim_funcao   reduce using rule 24 (cmds -> identificador op_atrib exp cmds .)
+
+
+state 129
+
+    (29) cmds -> identificador abre_par l_var fecha_par . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 154
+    empty                          shift and go to state 18
+
+state 130
+
+    (40) l_escs -> virgula l_esc .
+
+    pr_leia         reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_escreva      reduce using rule 40 (l_escs -> virgula l_esc .)
+    identificador   reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_se           reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_para         reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_enqto        reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_fim_algo     reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_fim_procmto  reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_fim_enqto    reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_senao        reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_fim_se       reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_fim_funcao   reduce using rule 40 (l_escs -> virgula l_esc .)
+    pr_fim_para     reduce using rule 40 (l_escs -> virgula l_esc .)
+
+
+state 131
+
+    (6) lids -> virgula l_ids .
+
+    dois_pontos     reduce using rule 6 (lids -> virgula l_ids .)
+
+
+state 132
+
+    (8) comp -> abre_col dim fecha_col .
+
+    virgula         reduce using rule 8 (comp -> abre_col dim fecha_col .)
+    dois_pontos     reduce using rule 8 (comp -> abre_col dim fecha_col .)
+
+
+state 133
+
+    (10) dim -> num_inteiro ponto . ponto dims
+
+    ponto           shift and go to state 155
+
+
+state 134
+
+    (2) decl -> pr_declare l_ids dois_pontos tipo ponto_virgula . decl
+    (2) decl -> . pr_declare l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> . pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+    (4) decl -> . empty
+    (81) empty -> .
+
+    pr_declare      shift and go to state 11
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    fecha_par       reduce using rule 81 (empty -> .)
+
+    decl                           shift and go to state 156
+    empty                          shift and go to state 10
+
+state 135
+
+    (18) tipo_registro -> pr_registro abre_par . decl fecha_par
+    (2) decl -> . pr_declare l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> . pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+    (4) decl -> . empty
+    (81) empty -> .
+
+    pr_declare      shift and go to state 11
+    fecha_par       reduce using rule 81 (empty -> .)
+
+    decl                           shift and go to state 157
+    empty                          shift and go to state 10
+
+state 136
+
+    (3) decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula . decl
+    (2) decl -> . pr_declare l_ids dois_pontos tipo ponto_virgula decl
+    (3) decl -> . pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl
+    (4) decl -> . empty
+    (81) empty -> .
+
+    pr_declare      shift and go to state 11
+    pr_leia         reduce using rule 81 (empty -> .)
+    pr_escreva      reduce using rule 81 (empty -> .)
+    identificador   reduce using rule 81 (empty -> .)
+    pr_se           reduce using rule 81 (empty -> .)
+    pr_para         reduce using rule 81 (empty -> .)
+    pr_enqto        reduce using rule 81 (empty -> .)
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    fecha_par       reduce using rule 81 (empty -> .)
+
+    decl                           shift and go to state 158
+    empty                          shift and go to state 10
+
+state 137
+
+    (35) ind -> abre_col num_inteiro fecha_col ind .
+
+    virgula         reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_saida        reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_declare      reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_leia         reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_escreva      reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    identificador   reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_se           reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_para         reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_enqto        reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_fim_procmto  reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_fim_algo     reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_fim_enqto    reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_senao        reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_fim_se       reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_fim_funcao   reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    pr_fim_para     reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    fecha_par       reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_arit_adi     reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_arit_sub     reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_rel_igual    reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_rel_naoigual reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_rel_maior    reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_rel_maiorigual reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_rel_menor    reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_rel_menorigual reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_arit_mult    reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_arit_div     reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_arit_expo    reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_arit_rad     reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_log_and      reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+    op_log_or       reduce using rule 35 (ind -> abre_col num_inteiro fecha_col ind .)
+
+
+state 138
+
+    (44) procs -> pr_procmto identificador pr_entrada l_var pr_saida l_var decl cmds . pr_fim_funcao
+
+    pr_fim_funcao   shift and go to state 159
+
+
+state 139
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate . num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+
+    num_inteiro     shift and go to state 160
+
+
+state 140
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate . identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+
+    identificador   shift and go to state 161
+
+
+state 141
+
+    (50) term_a -> fat_a adisub term_a .
+    (48) exp_a -> term_a . muldiv exp_a
+    (49) exp_a -> term_a .
+    (59) muldiv -> . op_arit_mult
+    (60) muldiv -> . op_arit_div
+
+  ! reduce/reduce conflict for op_arit_expo resolved using rule 49 (exp_a -> term_a .)
+  ! reduce/reduce conflict for op_arit_rad resolved using rule 49 (exp_a -> term_a .)
+  ! shift/reduce conflict for op_arit_mult resolved as shift
+  ! shift/reduce conflict for op_arit_div resolved as shift
+    op_arit_adi     reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_arit_sub     reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_leia         reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_escreva      reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    identificador   reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_se           reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_para         reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_enqto        reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_fim_algo     reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_fim_procmto  reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_fim_enqto    reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_senao        reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_fim_se       reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_fim_funcao   reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    pr_fim_para     reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    fecha_par       reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_rel_igual    reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_rel_naoigual reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_rel_maior    reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_rel_maiorigual reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_rel_menor    reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_rel_menorigual reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_log_and      reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_log_or       reduce using rule 50 (term_a -> fat_a adisub term_a .)
+    op_arit_expo    reduce using rule 49 (exp_a -> term_a .)
+    op_arit_rad     reduce using rule 49 (exp_a -> term_a .)
+    op_arit_mult    shift and go to state 124
+    op_arit_div     shift and go to state 123
+
+  ! op_arit_mult    [ reduce using rule 50 (term_a -> fat_a adisub term_a .) ]
+  ! op_arit_div     [ reduce using rule 50 (term_a -> fat_a adisub term_a .) ]
+  ! op_arit_expo    [ reduce using rule 50 (term_a -> fat_a adisub term_a .) ]
+  ! op_arit_rad     [ reduce using rule 50 (term_a -> fat_a adisub term_a .) ]
+
+    muldiv                         shift and go to state 125
+
+state 142
+
+    (67) exp_l -> op_log_nao abre_par rel . fecha_par
+
+    fecha_par       shift and go to state 162
+
+
+state 143
+
+    (52) fat_a -> exp_a op_arit_expo exp_a .
+    (52) fat_a -> exp_a . op_arit_expo exp_a
+    (53) fat_a -> exp_a . op_arit_rad exp_a
+
+  ! shift/reduce conflict for op_arit_expo resolved as shift
+  ! shift/reduce conflict for op_arit_rad resolved as shift
+    op_arit_adi     reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_arit_sub     reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_log_and      reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_log_or       reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    fecha_par       reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_leia         reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_escreva      reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    identificador   reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_se           reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_para         reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_enqto        reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_fim_algo     reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_fim_procmto  reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_fim_enqto    reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_senao        reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_fim_se       reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_fim_funcao   reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    pr_fim_para     reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_arit_mult    reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_arit_div     reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_rel_igual    reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_rel_naoigual reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_rel_maior    reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_rel_maiorigual reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_rel_menor    reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_rel_menorigual reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .)
+    op_arit_expo    shift and go to state 107
+    op_arit_rad     shift and go to state 108
+
+  ! op_arit_expo    [ reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .) ]
+  ! op_arit_rad     [ reduce using rule 52 (fat_a -> exp_a op_arit_expo exp_a .) ]
+
+
+state 144
+
+    (53) fat_a -> exp_a op_arit_rad exp_a .
+    (52) fat_a -> exp_a . op_arit_expo exp_a
+    (53) fat_a -> exp_a . op_arit_rad exp_a
+
+  ! shift/reduce conflict for op_arit_expo resolved as shift
+  ! shift/reduce conflict for op_arit_rad resolved as shift
+    op_arit_adi     reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_arit_sub     reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_log_and      reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_log_or       reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    fecha_par       reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_leia         reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_escreva      reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    identificador   reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_se           reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_para         reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_enqto        reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_fim_algo     reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_fim_procmto  reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_fim_enqto    reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_senao        reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_fim_se       reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_fim_funcao   reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    pr_fim_para     reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_arit_mult    reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_arit_div     reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_rel_igual    reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_rel_naoigual reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_rel_maior    reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_rel_maiorigual reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_rel_menor    reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_rel_menorigual reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .)
+    op_arit_expo    shift and go to state 107
+    op_arit_rad     shift and go to state 108
+
+  ! op_arit_expo    [ reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .) ]
+  ! op_arit_rad     [ reduce using rule 53 (fat_a -> exp_a op_arit_rad exp_a .) ]
+
+
+state 145
+
+    (54) fat_a -> abre_par exp_a fecha_par .
+
+    op_arit_adi     reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_arit_sub     reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_log_and      reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_log_or       reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    fecha_par       reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_leia         reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_escreva      reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    identificador   reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_se           reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_para         reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_enqto        reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_fim_algo     reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_fim_procmto  reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_fim_enqto    reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_senao        reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_fim_se       reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_fim_funcao   reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    pr_fim_para     reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_arit_mult    reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_arit_div     reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_arit_expo    reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_arit_rad     reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_rel_igual    reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_rel_naoigual reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_rel_maior    reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_rel_maiorigual reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_rel_menor    reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+    op_rel_menorigual reduce using rule 54 (fat_a -> abre_par exp_a fecha_par .)
+
+
+state 146
+
+    (66) exp_l -> rel op_log exp_l .
+
+    pr_leia         reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_escreva      reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    identificador   reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_se           reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_para         reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_enqto        reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_fim_algo     reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_fim_procmto  reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_fim_enqto    reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_senao        reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_fim_se       reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_fim_funcao   reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    pr_fim_para     reduce using rule 66 (exp_l -> rel op_log exp_l .)
+    fecha_par       reduce using rule 66 (exp_l -> rel op_log exp_l .)
+
+
+state 147
+
+    (69) rel -> fat_r op_rel fat_r .
+
+    fecha_par       reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    op_log_and      reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    op_log_or       reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_leia         reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_escreva      reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    identificador   reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_se           reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_para         reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_enqto        reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_fim_algo     reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_fim_procmto  reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_fim_enqto    reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_senao        reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_fim_se       reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_fim_funcao   reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+    pr_fim_para     reduce using rule 69 (rel -> fat_r op_rel fat_r .)
+
+
+state 148
+
+    (55) fat_a -> func abre_par l_var . fecha_par
+
+    fecha_par       shift and go to state 163
+
+
+state 149
+
+    (48) exp_a -> term_a muldiv exp_a .
+    (52) fat_a -> exp_a . op_arit_expo exp_a
+    (53) fat_a -> exp_a . op_arit_rad exp_a
+
+  ! shift/reduce conflict for op_arit_expo resolved as shift
+  ! shift/reduce conflict for op_arit_rad resolved as shift
+    op_arit_adi     reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_arit_sub     reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_arit_mult    reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_arit_div     reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_leia         reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_escreva      reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    identificador   reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_se           reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_para         reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_enqto        reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_fim_algo     reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_fim_procmto  reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_fim_enqto    reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_senao        reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_fim_se       reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_fim_funcao   reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    pr_fim_para     reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    fecha_par       reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_rel_igual    reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_rel_naoigual reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_rel_maior    reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_rel_maiorigual reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_rel_menor    reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_rel_menorigual reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_log_and      reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_log_or       reduce using rule 48 (exp_a -> term_a muldiv exp_a .)
+    op_arit_expo    shift and go to state 107
+    op_arit_rad     shift and go to state 108
+
+  ! op_arit_expo    [ reduce using rule 48 (exp_a -> term_a muldiv exp_a .) ]
+  ! op_arit_rad     [ reduce using rule 48 (exp_a -> term_a muldiv exp_a .) ]
+
+
+state 150
+
+    (42) sen -> pr_senao . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_se       reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 164
+    empty                          shift and go to state 18
+
+state 151
+
+    (25) cmds -> pr_se cond pr_entao cmds sen . pr_fim_se cmds
+
+    pr_fim_se       shift and go to state 165
+
+
+state 152
+
+    (43) sen -> empty .
+
+    pr_fim_se       reduce using rule 43 (sen -> empty .)
+
+
+state 153
+
+    (28) cmds -> pr_enqto cond cmds pr_fim_enqto cmds .
+
+    pr_fim_para     reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+    pr_fim_algo     reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+    pr_fim_procmto  reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+    pr_fim_enqto    reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+    pr_senao        reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+    pr_fim_se       reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+    pr_fim_funcao   reduce using rule 28 (cmds -> pr_enqto cond cmds pr_fim_enqto cmds .)
+
+
+state 154
+
+    (29) cmds -> identificador abre_par l_var fecha_par cmds .
+
+    pr_fim_para     reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+    pr_fim_algo     reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+    pr_fim_procmto  reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+    pr_fim_enqto    reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+    pr_senao        reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+    pr_fim_se       reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+    pr_fim_funcao   reduce using rule 29 (cmds -> identificador abre_par l_var fecha_par cmds .)
+
+
+state 155
+
+    (10) dim -> num_inteiro ponto ponto . dims
+    (11) dims -> . virgula dim
+    (12) dims -> . empty
+    (81) empty -> .
+
+    virgula         shift and go to state 166
+    fecha_col       reduce using rule 81 (empty -> .)
+
+    dims                           shift and go to state 167
+    empty                          shift and go to state 168
+
+state 156
+
+    (2) decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .
+
+    pr_leia         reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_escreva      reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    identificador   reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_se           reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_para         reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_enqto        reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_fim_procmto  reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_fim_algo     reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    pr_fim_funcao   reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+    fecha_par       reduce using rule 2 (decl -> pr_declare l_ids dois_pontos tipo ponto_virgula decl .)
+
+
+state 157
+
+    (18) tipo_registro -> pr_registro abre_par decl . fecha_par
+
+    fecha_par       shift and go to state 169
+
+
+state 158
+
+    (3) decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .
+
+    pr_leia         reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_escreva      reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    identificador   reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_se           reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_para         reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_enqto        reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_fim_procmto  reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_fim_algo     reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    pr_fim_funcao   reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+    fecha_par       reduce using rule 3 (decl -> pr_declare l_ids dois_pontos tipo_registro ponto_virgula decl .)
+
+
+state 159
+
+    (44) procs -> pr_procmto identificador pr_entrada l_var pr_saida l_var decl cmds pr_fim_funcao .
+
+    pr_inicio       reduce using rule 44 (procs -> pr_procmto identificador pr_entrada l_var pr_saida l_var decl cmds pr_fim_funcao .)
+
+
+state 160
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro . pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+
+    pr_passo        shift and go to state 170
+
+
+state 161
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador . pr_passo identificador pr_faca cmds pr_fim_para cmds
+
+    pr_passo        shift and go to state 171
+
+
+state 162
+
+    (67) exp_l -> op_log_nao abre_par rel fecha_par .
+
+    pr_leia         reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_escreva      reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    identificador   reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_se           reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_para         reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_enqto        reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_fim_algo     reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_fim_procmto  reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_fim_enqto    reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_senao        reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_fim_se       reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_fim_funcao   reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    pr_fim_para     reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+    fecha_par       reduce using rule 67 (exp_l -> op_log_nao abre_par rel fecha_par .)
+
+
+state 163
+
+    (55) fat_a -> func abre_par l_var fecha_par .
+
+    op_arit_adi     reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_arit_sub     reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_log_and      reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_log_or       reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    fecha_par       reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_leia         reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_escreva      reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    identificador   reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_se           reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_para         reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_enqto        reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_fim_algo     reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_fim_procmto  reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_fim_enqto    reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_senao        reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_fim_se       reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_fim_funcao   reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    pr_fim_para     reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_arit_mult    reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_arit_div     reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_arit_expo    reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_arit_rad     reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_rel_igual    reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_rel_naoigual reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_rel_maior    reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_rel_maiorigual reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_rel_menor    reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+    op_rel_menorigual reduce using rule 55 (fat_a -> func abre_par l_var fecha_par .)
+
+
+state 164
+
+    (42) sen -> pr_senao cmds .
+
+    pr_fim_se       reduce using rule 42 (sen -> pr_senao cmds .)
+
+
+state 165
+
+    (25) cmds -> pr_se cond pr_entao cmds sen pr_fim_se . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 172
+    empty                          shift and go to state 18
+
+state 166
+
+    (11) dims -> virgula . dim
+    (10) dim -> . num_inteiro ponto ponto dims
+
+    num_inteiro     shift and go to state 88
+
+    dim                            shift and go to state 173
+
+state 167
+
+    (10) dim -> num_inteiro ponto ponto dims .
+
+    fecha_col       reduce using rule 10 (dim -> num_inteiro ponto ponto dims .)
+
+
+state 168
+
+    (12) dims -> empty .
+
+    fecha_col       reduce using rule 12 (dims -> empty .)
+
+
+state 169
+
+    (18) tipo_registro -> pr_registro abre_par decl fecha_par .
+
+    ponto_virgula   reduce using rule 18 (tipo_registro -> pr_registro abre_par decl fecha_par .)
+
+
+state 170
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo . num_inteiro pr_faca cmds pr_fim_para cmds
+
+    num_inteiro     shift and go to state 174
+
+
+state 171
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo . identificador pr_faca cmds pr_fim_para cmds
+
+    identificador   shift and go to state 175
+
+
+state 172
+
+    (25) cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .
+
+    pr_fim_para     reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+    pr_fim_algo     reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+    pr_fim_procmto  reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+    pr_fim_enqto    reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+    pr_senao        reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+    pr_fim_se       reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+    pr_fim_funcao   reduce using rule 25 (cmds -> pr_se cond pr_entao cmds sen pr_fim_se cmds .)
+
+
+state 173
+
+    (11) dims -> virgula dim .
+
+    fecha_col       reduce using rule 11 (dims -> virgula dim .)
+
+
+state 174
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro . pr_faca cmds pr_fim_para cmds
+
+    pr_faca         shift and go to state 176
+
+
+state 175
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador . pr_faca cmds pr_fim_para cmds
+
+    pr_faca         shift and go to state 177
+
+
+state 176
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca . cmds pr_fim_para cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 178
+    empty                          shift and go to state 18
+
+state 177
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca . cmds pr_fim_para cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 179
+    empty                          shift and go to state 18
+
+state 178
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds . pr_fim_para cmds
+
+    pr_fim_para     shift and go to state 180
+
+
+state 179
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds . pr_fim_para cmds
+
+    pr_fim_para     shift and go to state 181
+
+
+state 180
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 182
+    empty                          shift and go to state 18
+
+state 181
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para . cmds
+    (22) cmds -> . pr_leia l_var cmds
+    (23) cmds -> . pr_escreva l_esc cmds
+    (24) cmds -> . identificador op_atrib exp cmds
+    (25) cmds -> . pr_se cond pr_entao cmds sen pr_fim_se cmds
+    (26) cmds -> . pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds
+    (27) cmds -> . pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds
+    (28) cmds -> . pr_enqto cond cmds pr_fim_enqto cmds
+    (29) cmds -> . identificador abre_par l_var fecha_par cmds
+    (30) cmds -> . empty
+    (81) empty -> .
+
+    pr_leia         shift and go to state 19
+    pr_escreva      shift and go to state 22
+    identificador   shift and go to state 21
+    pr_se           shift and go to state 16
+    pr_para         shift and go to state 15
+    pr_enqto        shift and go to state 17
+    pr_fim_algo     reduce using rule 81 (empty -> .)
+    pr_fim_procmto  reduce using rule 81 (empty -> .)
+    pr_fim_enqto    reduce using rule 81 (empty -> .)
+    pr_senao        reduce using rule 81 (empty -> .)
+    pr_fim_se       reduce using rule 81 (empty -> .)
+    pr_fim_funcao   reduce using rule 81 (empty -> .)
+    pr_fim_para     reduce using rule 81 (empty -> .)
+
+    cmds                           shift and go to state 183
+    empty                          shift and go to state 18
+
+state 182
+
+    (26) cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .
+
+    pr_fim_para     reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+    pr_fim_algo     reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+    pr_fim_procmto  reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+    pr_fim_enqto    reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+    pr_senao        reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+    pr_fim_se       reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+    pr_fim_funcao   reduce using rule 26 (cmds -> pr_para identificador op_atrib num_inteiro pr_ate num_inteiro pr_passo num_inteiro pr_faca cmds pr_fim_para cmds .)
+
+
+state 183
+
+    (27) cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .
+
+    pr_fim_para     reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+    pr_fim_algo     reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+    pr_fim_procmto  reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+    pr_fim_enqto    reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+    pr_senao        reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+    pr_fim_se       reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+    pr_fim_funcao   reduce using rule 27 (cmds -> pr_para identificador op_atrib identificador pr_ate identificador pr_passo identificador pr_faca cmds pr_fim_para cmds .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for op_arit_mult in state 68 resolved as shift
+WARNING: shift/reduce conflict for op_arit_div in state 68 resolved as shift
+WARNING: shift/reduce conflict for op_arit_adi in state 110 resolved as shift
+WARNING: shift/reduce conflict for op_arit_sub in state 110 resolved as shift
+WARNING: shift/reduce conflict for op_arit_mult in state 141 resolved as shift
+WARNING: shift/reduce conflict for op_arit_div in state 141 resolved as shift
+WARNING: shift/reduce conflict for op_arit_expo in state 143 resolved as shift
+WARNING: shift/reduce conflict for op_arit_rad in state 143 resolved as shift
+WARNING: shift/reduce conflict for op_arit_expo in state 144 resolved as shift
+WARNING: shift/reduce conflict for op_arit_rad in state 144 resolved as shift
+WARNING: shift/reduce conflict for op_arit_expo in state 149 resolved as shift
+WARNING: shift/reduce conflict for op_arit_rad in state 149 resolved as shift
+WARNING: reduce/reduce conflict in state 141 resolved using rule (exp_a -> term_a)
+WARNING: rejected rule (term_a -> fat_a adisub term_a) in state 141

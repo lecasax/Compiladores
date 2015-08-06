@@ -1,0 +1,49 @@
+algoritmo algoritmo_soma
+    Procedimento soma_numeros
+        Entrada entrada_programa Declare varP1, varP2: INTEIRO;
+            Declare result: REAL;
+            result = varP1 + varP2
+            escreva result
+
+    fim_procedimento
+    Inicio
+
+        Declare var1, var2, var3: INTEIRO;
+        Declare vetor[10..]: INTEIRO;
+        Declare var_registro: REGISTRO(Declare var_into_registro1:REGISTRO(Declare var_into1, var_into2:INTEIRO;););
+        Declare var7: REAL;
+        Declare varID: var_registro;
+        var1 = 4
+        var2 = 7
+        var3 = 1
+        soma_numeros(var1, var2)
+
+        se (var1 == var2) entao
+            escreva "sao iguais"
+        fim_se
+
+        var1 = var2 * var3
+
+        var1 = var2 / var3
+
+        var1 = var2 ^ var3
+
+        var1 = var2 # var3
+
+        var1 = ABS(var2)
+
+        var1 = TRUNCA(var2)
+
+        var1 = RESTO(var2)
+
+        para count = 1 ate 10 passo 1 faca
+            escreva "BCC UEMS"
+        fim_para
+
+        enquanto (var1 != var2)
+            escreva "As variaveis sao iguais"
+            var1 = var1 + 1
+        fim_enquanto
+
+
+    fim_algoritmo
